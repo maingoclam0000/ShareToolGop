@@ -227,7 +227,7 @@ def banner():
   sleep(0.00125)
 
 banner()
-id=input(f' {trang}\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập ID Box Cần Spam:{vang} ')
+id=input(f' {trang}\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập ID Box Cần Spam:{vang} ')
 while True:
     ck=input(f' {trang}\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập Cookie Facebook:{vang} ')
     try:

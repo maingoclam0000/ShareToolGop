@@ -113,17 +113,24 @@ while True:
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.3 \033[1;97m: \033[1;34mTool Spam Messager \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.4 \033[1;97m: \033[1;34mTool Spam sms + call♔ \033[1;32m[Online]")
 	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Airdrop Vip \033[1;37m   ║   ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.1 \033[1;97m: \033[1;34mTool Đào Coin Blum \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.2 \033[1;97m: \033[1;34mTool Đào Coin Banana \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.3 \033[1;97m: \033[1;34mTool Đào Coin Birds \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.4 \033[1;97m: \033[1;34mTool Đào coin Xkucoin♔ \033[1;32m[Online]")
+	print("\033[1;37m╔══════════════════════╗         ")
 	print("\033[1;37m║  \033[1;32mTool Tiện Ích \033[1;37m      ║   ")
 	print("\033[1;37m╚══════════════════════╝           ")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.1 \033[1;97m: \033[1;34mTool Get ID Facebook \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.2 \033[1;97m: \033[1;34mTool Get Token Facebook \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.3 \033[1;97m: \033[1;34mTool Spam Message \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.4 \033[1;97m: \033[1;34mTool Share Ảo Facebook \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.5 \033[1;97m: \033[1;34mTool Get Url Google \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.6 \033[1;97m: \033[1;34mTool Download Video TikTok \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.7 \033[1;97m: \033[1;34mTool Download Video Youtube \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.8 \033[1;97m: \033[1;34mTool Đào Mail \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.9 \033[1;97m: \033[1;34mThoát Tool \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.1 \033[1;97m: \033[1;34mTool Get ID Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.2 \033[1;97m: \033[1;34mTool Get Token Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.3 \033[1;97m: \033[1;34mTool Spam Message \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.4 \033[1;97m: \033[1;34mTool Share Ảo Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.5 \033[1;97m: \033[1;34mTool Get Url Google \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.6 \033[1;97m: \033[1;34mTool Download Video TikTok \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.7 \033[1;97m: \033[1;34mTool Download Video Youtube \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.8 \033[1;97m: \033[1;34mTool Đào Mail \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.9 \033[1;97m: \033[1;34mThoát Tool \033[1;32m[Online]")
 	print(f"\033[97m════════════════════════════════════════════════════════")
 	chon = input('\033[1;91m┌─╼\033[1;97m[\033[1;91m<\033[1;97m/\033[1;91m>\033[1;97m]--\033[1;91m>\033[1;97m Nhập lựa chọn \033[1;97m \n\033[1;91m└─╼\033[1;91m✈ \033[1;33m : ')
 	print('\033[1;39m─────────────────────────────────────────────────────────── ')
@@ -228,29 +235,41 @@ while True:
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamsms.py').text)
 	elif chon == '7.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetidFacebook.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spambox.py').text)
 	elif chon == '7.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetTokenFB.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamcmt.py').text)
 	elif chon == '7.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolSpamMessage.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spammess.py').text)
 	elif chon == '7.4':
 		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamsms.py').text)
+	elif chon == '8.1':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetidFacebook.py').text)
+	elif chon == '8.2':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetTokenFB.py').text)
+	elif chon == '8.3':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolSpamMessage.py').text)
+	elif chon == '8.4':
+		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
-	elif chon == '7.5':
+	elif chon == '8.5':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/urllink.py').text)
-	elif chon == '7.6':
+	elif chon == '8.6':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/vidtiktok.py').text) 
-	elif chon == '7.7':
+	elif chon == '8.7':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/vidytb.py').text)
-	elif chon == '7.8':
+	elif chon == '8.8':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolDaoMail.py').text)
-	elif chon == '7.9':
+	elif chon == '8.9':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ThoatTool.py').text)          
 	else:
