@@ -129,54 +129,54 @@ while True:
 	print('\033[1;39m─────────────────────────────────────────────────────────── ')
 	if chon == '1':
 		# Thành Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoTikTokv1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTokv1.py').text)
 	elif chon == '1.1':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoTikTokv1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTokv1.py').text)
 	elif chon == '1.2':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoTikTokv2.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTokv2.py').text)
 	elif chon == '1.3':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoIG.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoIG.pyy').text)
 	elif chon == '1.4':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoX.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoX.py').text)
 	elif chon == '1.5':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoYTB.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoYTB.py').text)
 	elif chon == '1.6':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoTheads.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTheads.py').text)
 	elif chon == '1.7':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoLinkedin.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoLinkedin.py').text)
 	elif chon == '1.8':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/Full%20Golike/AutoLinkedin.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoLinkedin.py').text)
         
 		# TTC
 	elif chon == '2.1':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TuongTacCheo/TTCFB.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCFB.py').text)
 	elif chon == '2.2':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TuongTacCheo/TTCPro5.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCPro5.py').text)
 	elif chon == '2.3':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TuongTacCheo/TTCPro5v1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCPro5v1.py').text)
 	elif chon == '2.4':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TuongTacCheo/TTCTikTok.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCTikTok.py').text)
 	elif chon == '2.5':
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TuongTacCheo/TTCIG.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCIG.py').text)
 		# TDS
 	elif chon == '3.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TraoDoiSub/ToolTDSFb.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/ToolTDSFb.py').text)
 	elif chon == '3.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TraoDoiSub/ToolTDSPro5.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/ToolTDSPro5.py').text)
 	elif chon == '3.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TraoDoiSub/ToolTDSPro5v1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/ToolTDSPro5v1.py').text)
 	elif chon == '3.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TraoDoiSub/ToolTDSTikTok.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/ToolTDSTikTok.py').text)
 	elif chon == '3.5':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TraoDoiSub/TDSIG.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/TDSIG.py').text)
 	elif chon == '3.6':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TraoDoiSub/TDSIG.py').text)	
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/TDSIG.py').text)	
 		# Buff view
 	elif chon == '4.1':
 		# Thanh Công
@@ -198,60 +198,60 @@ while True:
 		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/viewtik.py').text)
 	elif chon == '5.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/mailer/genmailv1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/mailer/genmailv1.py').text)
 	elif chon == '5.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/mailer/genmailv2.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/mailer/genmailv2.py').text)
 	elif chon == '5.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/proxy/genproxyv1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv1.py').text)
 	elif chon == '5.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/proxy/genproxyv2.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv2.py').text)
 	elif chon == '5.5':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/proxy/genproxyv3.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv3.py').text)
 	elif chon == '5.6':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/proxy/genproxyv4.py').text) 
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv4.py').text) 
 	elif chon == '6.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/spam/spambox.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spambox.py').text)
 	elif chon == '6.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/spam/spamcmt.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamcmt.py').text)
 	elif chon == '6.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/spam/spammess.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spammess.py').text)
 	elif chon == '6.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/spam/spamsms.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamsms.py').text)
 	elif chon == '7.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolGetidFacebook.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetidFacebook.py').text)
 	elif chon == '7.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolGetTokenFB.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetTokenFB.py').text)
 	elif chon == '7.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolSpamMessage.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolSpamMessage.py').text)
 	elif chon == '7.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
 	elif chon == '7.5':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/urllink.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/urllink.py').text)
 	elif chon == '7.6':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/vidtiktok.py').text) 
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/vidtiktok.py').text) 
 	elif chon == '7.7':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/vidytb.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/vidytb.py').text)
 	elif chon == '7.8':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolDaoMail.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolDaoMail.py').text)
 	elif chon == '7.9':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ThoatTool.py').text)          
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ThoatTool.py').text)          
 	else:
 		sys.exit("")
