@@ -173,7 +173,7 @@ def main():
     if ip_address:
         existing_key = kiem_tra_ip(ip_address)
         if existing_key:
-            print(f"\033[1;35mTool còn hạn, mời bạn dùng tool.")
+            print(f"\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;35mTool còn hạn, mời bạn dùng tool.")
             time.sleep(2)
         else:
             if da_qua_gio_moi():
@@ -217,7 +217,7 @@ def main():
                             while True:
                                 keynhap = input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Đã Vượt Là: ')
                                 if keynhap == key:
-                                    print('Key Đúng Mời Bạn Dùng Tool')
+                                    print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Key Đúng Mời Bạn Dùng Tool')
                                     sleep(2)
                                     luu_thong_tin_ip(ip_address, keynhap, expiration_date)
                                     return  # Thoát khỏi vòng lặp và hàm main
