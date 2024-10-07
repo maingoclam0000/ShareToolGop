@@ -142,7 +142,7 @@ while True:
 	elif chon == '1.2':
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTokv2.py').text)
 	elif chon == '1.3':
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoIG.pyy').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoIG.py').text)
 	elif chon == '1.4':
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoX.py').text)
 	elif chon == '1.5':
