@@ -235,16 +235,16 @@ while True:
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamsms.py').text)
 	elif chon == '7.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spambox.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoAirdrop/ToolBlum.py').text)
 	elif chon == '7.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamcmt.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoAirdrop/ToolBlum.py').text)
 	elif chon == '7.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spammess.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoAirdrop/ToolBlum.py').text)
 	elif chon == '7.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamsms.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoAirdrop/ToolBlum.py').text)
 	elif chon == '8.1':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetidFacebook.py').text)
