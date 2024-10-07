@@ -1,41 +1,25 @@
-import threading
-import base64
-import os
-import time
-import re
-import json
-import random
-import requests
-import socket
-import sys
-from time import sleep  # Đã sửa lỗi ở đây
+import threading, base64, os, time, re, json, random
 from datetime import datetime, timedelta
+from time import sleep, strftime
 from bs4 import BeautifulSoup
-from concurrent.futures import ThreadPoolExecutor
+import requests, socket, sys
 
-# Kiểm tra và cài đặt thư viện cần thiết
 try:
-    from faker import Faker
-    from requests import session
-    from colorama import Fore, Style
-    import pystyle
-except ImportError:
-    os.system("pip install faker requests colorama bs4 pystyle")
-    os.system("pip3 install requests pysocks")
-    print('__Vui Lòng Chạy Lại Tool__')
-    sys.exit()
-
-# Tạo hoặc đọc khóa mã hóa bằng base64
-secret_key = base64.urlsafe_b64encode(os.urandom(32))
-
-# Mã hóa và giải mã dữ liệu bằng base64
-def encrypt_data(data):
-    return base64.b64encode(data.encode()).decode()
-
-def decrypt_data(encrypted_data):
-    return base64.b64decode(encrypted_data.encode()).decode()
-
-# Màu sắc cho hiển thị
+  from faker import Faker
+  from requests import session
+  from colorama import Fore, Style
+  import requests, random, re
+  from random import randint
+  import requests,pystyle
+  import socks
+except:
+  os.system("pip install faker")
+  os.system("pip install requests")
+  os.system("pip install colorama")
+  os.system('pip install requests && pip install bs4 && pip install pystyle')
+  print('__Vui Lòng Chạy Lại Tool__')
+  
+from pystyle import Add, Center, Anime, Colors, Colorate, Write, System
 xnhac = "\033[1;36m"
 do = "\033[1;31m"
 luc = "\033[1;32m"
@@ -43,37 +27,13 @@ vang = "\033[1;33m"
 xduong = "\033[1;34m"
 hong = "\033[1;35m"
 trang = "\033[1;39m"
-end = '\033[0m'
+whiteb="\033[1;39m"
+red="\033[0;31m"
+redb="\033[1;31m"
+end='\033[0m'
+dev="\033[1;39m[\033[1;31m×\033[1;39m]\033[1;39m"
 
-def bes4(url):
-    try:
-        response = requests.get(url, timeout=5)
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.content, 'html.parser')
-            version_tag = soup.find('span', id='version')
-            maintenance_tag = soup.find('span', id='maintenance')
-            version = version_tag.text.strip() if version_tag else None
-            maintenance = maintenance_tag.text.strip() if maintenance_tag else None
-            return version, maintenance
-    except requests.RequestException:
-        return None, None
-    return None, None
-
-def checkver():
-    url = 'https://checkserver.hotrommo.com/'
-    version, maintenance = bes4(url)
-    if maintenance == 'on':
-        sys.exit()
-    return version
-
-current_version = checkver()
-if current_version:
-    print(f"Phiên bản hiện tại: {current_version}")
-else:
-    print("Không thể lấy thông tin phiên bản hoặc tool đang được bảo trì.")
-    sys.exit()
 def banner():
- os.system("cls" if os.name == "nt" else "clear")
  banner = f"""
 \033[1;33m██      ██╗      ████████╗ █████╗  █████╗ ██╗
 \033[1;35m██╗    ╔██║      ╚══██╔══╝██╔══██╗██╔══██╗██║
@@ -89,235 +49,228 @@ def banner():
 \033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Facebook\033[1;31m : \033[1;97mi.urs.bin.python.TrinhHuong 
 \033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Telegram\033[1;31m : \033[1;97m☞\033[1;32mhttps://t.me/+77MuosyD-yk4MGY1🔫\033[1;97m☜
 \033[97m════════════════════════════════════════════════
-\033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Youtube\033[1;31m  : \033[1;97m☞ \033[1;36mHướng Dev - Kiếm Tiền Online\033[1;31m♔ \033[1;97m☜
 """
  for X in banner:
   sys.stdout.write(X)
   sys.stdout.flush() 
   sleep(0.000001)
-def get_ip_address():
-    try:
-        response = requests.get('https://api.ipify.org?format=json')
-        ip_data = response.json()  # Trả về từ điển JSON
-        ip_address = ip_data['ip']  # Lấy giá trị từ trường 'ip'
-        return ip_address
-    except Exception as e:
-        print(f"Lỗi khi lấy địa chỉ IP: {e}")
-        return None
-
-# Hàm để hiển thị địa chỉ IP của thiết bị
-def display_ip_address(ip_address):
-    if ip_address:
-        banner()
-        print(f"\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mĐịa chỉ IP : {ip_address}")
-    else:
-        print("Không thể lấy địa chỉ IP của thiết bị.")
-
-def luu_thong_tin_ip(ip, key, expiration_date):
-    data = {ip: {'key': key, 'expiration_date': expiration_date.isoformat()}}
-    encrypted_data = encrypt_data(json.dumps(data))
-
-    with open('ip_key.json', 'w') as file:
-        file.write(encrypted_data)
-
-def tai_thong_tin_ip():
-    try:
-        with open('ip_key.json', 'r') as file:
-            encrypted_data = file.read()
-        data = json.loads(decrypt_data(encrypted_data))
-        return data
-    except FileNotFoundError:
-        return None
-
-def kiem_tra_ip(ip):
-    data = tai_thong_tin_ip()
-    if data and ip in data:
-        expiration_date = datetime.fromisoformat(data[ip]['expiration_date'])
-        if expiration_date > datetime.now():
-            return data[ip]['key']
-    return None
-
-def generate_key_and_url(ip_address):
-    ngay = int(datetime.now().day)
-    key1 = str(ngay * 27 + 27)
-    ip_numbers = ''.join(filter(str.isdigit, ip_address))
-    key = f'huongdev{key1}{ip_numbers}'
-    expiration_date = datetime.now().replace(hour=23, minute=59, second=0, microsecond=0)
-    url = f'https://huongdev.com/?key={key}'
-    return url, key, expiration_date
-
-def da_qua_gio_moi():
-    now = datetime.now()
-    midnight = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
-    return now >= midnight
-
-def get_shortened_link(link_key_yeumoney):
-    try:
-        response = requests.get(f'https://dilink.net/JSON_QL_API.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url={link_key_yeumoney}')
-        if response.status_code == 200:
-            return response.json()
-    except requests.RequestException:
-        return None
-def get_shortened_link_phu(url):
-    token_yeumoney = 'f7e85811bc83948a0a66e121fa312afc03472eabd86a53c4bc9ec86662a480c8'
-    try:
-        yeumoney_response = requests.get(f'https://yeumoney.com/QL_api.php?token={token_yeumoney}&format=json&url={url}')
-        if yeumoney_response.status_code == 200:
-            return yeumoney_response.json()
-    except requests.RequestException:
-        return None
-def main():
-    ip_address = get_ip_address()
-    display_ip_address(ip_address)
-
-    if ip_address:
-        existing_key = kiem_tra_ip(ip_address)
-        if existing_key:
-            print(f"\033[1;35mTool còn hạn, mời bạn dùng tool.")
-            time.sleep(2)
-        else:
-            if da_qua_gio_moi():
-                print("\033[1;33mQuá giờ sử dụng tool!")
-                return
-
-            url, key, expiration_date = generate_key_and_url(ip_address)
-
-            with ThreadPoolExecutor(max_workers=2) as executor:
-                print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 1 Để Lấy Key \033[1;33m( Free )")
-                print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Lấy Key \033[1;33m( Dự phòng 1 )")
-                print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 3 Để Lấy Key \033[1;33m( Dự phòng 2 )")
-
-                while True:
-                    try:
-                        try:
-                            choice = input("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;34mChọn lựa chọn: ")
-                            print("\033[97m════════════════════════════════════════════════")
-                        except KeyboardInterrupt:
-                            print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
-                            sys.exit()
-                        
-                        if choice == "1":  # Kiểm tra chuỗi "1"
-                            yeumoney_future = executor.submit(get_shortened_link_phu, url)
-                            yeumoney_data = yeumoney_future.result()
-                            if yeumoney_data and yeumoney_data.get('status') == "error":
-                                print(yeumoney_data.get('message'))
-                                return
-                            else:
-                                link_key_yeumoney = yeumoney_data.get('shortenedUrl')
-                                dlink_future = executor.submit(get_shortened_link, link_key_yeumoney)
-                                dlink_data = dlink_future.result()
-                                # print(dlink_data)
-                                if dlink_data and dlink_data.get('status') == "error":
-                                    print(dlink_data.get('message'))
-                                    return
-                                else:
-                                    link_key_dlink = dlink_data['url']
-                                    print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mLink Để Vượt Key Là:', link_key_dlink)
-                            
-                            while True:
-                                keynhap = input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Đã Vượt Là: ')
-                                if keynhap == key:
-                                    print('Key Đúng Mời Bạn Dùng Tool')
-                                    sleep(2)
-                                    luu_thong_tin_ip(ip_address, keynhap, expiration_date)
-                                    return  # Thoát khỏi vòng lặp và hàm main
-                                else:
-                                    print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Sai Vui Lòng Vượt Lại Link:', link_key_dlink)
-                        elif choice == "2":  # Kiểm tra chuỗi "2"
-                            yeumoney_future = executor.submit(get_shortened_link_phu, url)
-                            yeumoney_data = yeumoney_future.result()
-                            if yeumoney_data and yeumoney_data.get('status') == "error":
-                                print(yeumoney_data.get('message'))
-                                return
-                            else:
-                                link_key_yeumoney = yeumoney_data.get('shortenedUrl')
-                                token_link4m = '66358d4299686f733016d95a'
-                                link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={link_key_yeumoney}', timeout=5)
-                                print("\033[1;31mLưu Ý: \033[1;33mTool Free Nhé Cả Nhà Yêu \033[1;91m❣\033[1;32m")
-                                
-                                if link4m_response.status_code == 200:
-                                    link4m_data = link4m_response.json()
-                                    if link4m_data.get('status') == "error":
-                                        print(link4m_data.get('message'))
-                                        return
-                                    else:
-                                        link_key_4m = link4m_data.get('shortenedUrl')
-                                        print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mLink Để Vượt Key Là:', link_key_4m)
-                                else:
-                                    print('Không thể kết nối đến dịch vụ rút gọn URL')
-                                    return
-                        
-                            while True:
-                                keynhap = input('Key Đã Vượt Là: ')
-                                if keynhap == key:
-                                    print('Key Đúng Mời Bạn Dùng Tool')
-                                    sleep(2)
-                                    luu_thong_tin_ip(ip_address, keynhap, expiration_date)
-                                    return  # Thoát khỏi vòng lặp và hàm main
-                                else:
-                                    print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Sai Vui Lòng Vượt Lại Link:', link_key_4m)
-                        elif choice == "3":  # Kiểm tra chuỗi "2"
-                            yeumoney_future = executor.submit(get_shortened_link_phu, url)
-                            yeumoney_data = yeumoney_future.result()
-                            if yeumoney_data and yeumoney_data.get('status') == "error":
-                                print(yeumoney_data.get('message'))
-                                return
-                            else:
-                                link_key = yeumoney_data.get('shortenedUrl')
-                                token_8link = '8c72127ca7e74ebd4b963be7d3cc9f75f4ddd4ead4ee121d9b6ba28a4dfa991b'
-                                link8_response = requests.get(f'https://partner.8link.io/api/public/gen-shorten-link?apikey={token_8link}&format=json&url={link_key}&target_domain=https://8link.io')
-                                print("\033[1;31mLưu Ý: \033[1;33mTool Free Nhé Cả Nhà Yêu \033[1;91m❣\033[1;32m")
-                                if link8_response.status_code == 200:
-                                    link8_data = link8_response.json()
-                                    if link8_data.get('status') == "error":
-                                        print(link8_data.get('message'))
-                                        quit()
-                                    else:
-                                        link_key_8link = link8_data.get('shortened_url')
-                                        link_redirect = requests.get(f'https://dilink.net/api_dr_pt.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url={link_key_8link}&url_phu={link_key}')
-                                        if link_redirect.status_code == 200:
-                                            link_redirect_data = link_redirect.json()
-                                            # print(link_redirect_data)
-                                            print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mLink Để Vượt Key Là:', link_redirect_data['url_direct'])
-                                        else:
-                                            print('Không thể kết nối đến dịch vụ rút gọn URL')
-                                            return    
-                                else:
-                                    print('Không thể kết nối đến dịch vụ rút gọn URL')
-                                    return
-                            while True:
-                                keynhap = input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Đã Vượt Là: ')
-                                if keynhap == key:
-                                    print('Key Đúng Mời Bạn Dùng Tool')
-                                    sleep(2)
-                                    luu_thong_tin_ip(ip_address, keynhap, expiration_date)
-                                    return  # Thoát khỏi vòng lặp và hàm main
-                                else:
-                                    print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Sai Vui Lòng Vượt Lại Link:', link_redirect_data['url_direct'])
-                        else:
-                            # Nếu người dùng nhập không phải 1 hoặc 2, yêu cầu nhập lại
-                            banner()
-                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;91m✈  Lựa chọn không hợp lệ. Vui lòng chọn lại.")
-                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 1 Để Lấy Key \033[1;33m( Free )")
-                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Lấy Key \033[1;33m( Dự Phòng 1 )")
-                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 3 Để Lấy Key \033[1;33m( Dự Phòng 2 )")
-                            continue  # Quay lại đầu vòng lặp
-                    except ValueError:
-                        print("Vui lòng nhập số hợp lệ.")
-
-        if da_qua_gio_moi():
-            print("Key của bạn đã hết hạn. Đợi 2 giây để lấy key mới từ ngày mới...")
-            time.sleep(2)
-            main()  # Gọi lại main() để lấy key mới từ ngày mới
-    else:
-        print("Không thể lấy địa chỉ IP.")
-
-if __name__ == '__main__':
-    main()
 
 while True:
-    try:
-        exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/index.py').text)
-    except KeyboardInterrupt:
-        print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
-        sys.exit()
+	os.system('cls' if os.name == 'nt' else 'clear')
+	banner()
+	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Auto Golike    \033[1;37m║          ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1 \033[1;97m: \033[1;34mTool Auto TikTok \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1.1 \033[1;97m: \033[1;34mTool Auto TikTokv1 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1.2 \033[1;97m: \033[1;34mTool Auto TikTok Tự Động \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1.3 \033[1;97m: \033[1;34mTool Auto Instagram \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1.4 \033[1;97m: \033[1;34mTool Auto Twitter \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1.5 \033[1;97m: \033[1;34mTool Auto Youtube \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1.6 \033[1;97m: \033[1;34mTool Auto Thread \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1.7 \033[1;97m: \033[1;34mTool Auto Linkedin \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m1.8 \033[1;97m: \033[1;34mTool Auto Shoppe \033[1;32m[Off]")
+	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Tương Tác Chéo \033[1;37m║          ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m2.1 \033[1;97m: \033[1;34mTool TTC Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m2.2 \033[1;97m: \033[1;34mTool TTC Pro5 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m2.3 \033[1;97m: \033[1;34mTool TTC Pro5v1 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m2.4 \033[1;97m: \033[1;34mTool TTC TikTok \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m2.5 \033[1;97m: \033[1;34mTool TTC Instagram \033[1;32m[Online]")
+	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool TraoDoiSub.com \033[1;37m║          ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.1 \033[1;97m: \033[1;34mTool TDS Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.2 \033[1;97m: \033[1;34mTool TDS FB Full Job \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.3 \033[1;97m: \033[1;34mTool TDS Pro5 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.4 \033[1;97m: \033[1;34mTool TDS Pro5v1 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.5 \033[1;97m: \033[1;34mTool TDS TikTok \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.6 \033[1;97m: \033[1;34mTool TDS Instagram \033[1;32m[Online]")
+	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Buff View \033[1;37m     ║   ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.1 \033[1;97m: \033[1;34mTool Follow Page Pro5 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.2 \033[1;97m: \033[1;34mTool Buff Member Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.3 \033[1;97m: \033[1;34mTool Buff Member Telegram \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.4 \033[1;97m: \033[1;34mBuff Reaction Story Bằng Page Pro5 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.5 \033[1;97m: \033[1;34mTool Buff View Story Bằng Page Pro5 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.6 \033[1;97m: \033[1;34mTool Buff View Tik Tok \033[1;32m[Online]")
+	print("\033[1;37m╔════════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Gen Mail + Proxy \033[1;37m║   ")
+	print("\033[1;37m╚════════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.1 \033[1;97m: \033[1;34mTool Gen Mail V1 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.2 \033[1;97m: \033[1;34mTool Gen Mail V2 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.3 \033[1;97m: \033[1;34mTool Gen Proxy V1 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.4 \033[1;97m: \033[1;34mTool Gen Proxy V2 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.5 \033[1;97m: \033[1;34mTool Gen Proxy V3 \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.6 \033[1;97m: \033[1;34mTool Gen Proxy V4 \033[1;32m[Online]")
+	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Spam Vip \033[1;37m      ║   ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.1 \033[1;97m: \033[1;34mTool Spam Box Messager \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.2 \033[1;97m: \033[1;34mTool Follow Spam Comment \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.3 \033[1;97m: \033[1;34mTool Spam Messager \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.4 \033[1;97m: \033[1;34mTool Spam sms + call♔ \033[1;32m[Online]")
+	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Airdrop Vip \033[1;37m   ║   ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.1 \033[1;97m: \033[1;34mTool Đào Coin Blum \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.2 \033[1;97m: \033[1;34mTool Đào Coin Banana \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.3 \033[1;97m: \033[1;34mTool Đào Coin Birds \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.4 \033[1;97m: \033[1;34mTool Đào coin Xkucoin♔ \033[1;32m[Online]")
+	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Tiện Ích \033[1;37m      ║   ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.1 \033[1;97m: \033[1;34mTool Get ID Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.2 \033[1;97m: \033[1;34mTool Get Token Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.3 \033[1;97m: \033[1;34mTool Spam Message \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.4 \033[1;97m: \033[1;34mTool Share Ảo Facebook \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.5 \033[1;97m: \033[1;34mTool Get Url Google \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.6 \033[1;97m: \033[1;34mTool Download Video TikTok \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.7 \033[1;97m: \033[1;34mTool Download Video Youtube \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.8 \033[1;97m: \033[1;34mTool Đào Mail \033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m8.9 \033[1;97m: \033[1;34mThoát Tool \033[1;32m[Online]")
+	print(f"\033[97m════════════════════════════════════════════════════════")
+	chon = input('\033[1;91m┌─╼\033[1;97m[\033[1;91m<\033[1;97m/\033[1;91m>\033[1;97m]--\033[1;91m>\033[1;97m Nhập lựa chọn \033[1;97m \n\033[1;91m└─╼\033[1;91m✈ \033[1;33m : ')
+	print('\033[1;39m─────────────────────────────────────────────────────────── ')
+	if chon == '1':
+		# Thành Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTokv1.py').text)
+	elif chon == '1.1':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTokv1.py').text)
+	elif chon == '1.2':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTokv2.py').text)
+	elif chon == '1.3':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoIG.py').text)
+	elif chon == '1.4':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoX.py').text)
+	elif chon == '1.5':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoYTB.py').text)
+	elif chon == '1.6':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTheads.py').text)
+	elif chon == '1.7':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoLinkedin.py').text)
+	elif chon == '1.8':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoLinkedin.py').text)
+        
+		# TTC
+	elif chon == '2.1':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCFB.py').text)
+	elif chon == '2.2':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCPro5.py').text)
+	elif chon == '2.3':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCPro5v1.py').text)
+	elif chon == '2.4':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCTikTok.py').text)
+	elif chon == '2.5':
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TuongTacCheo/TTCIG.py').text)
+		# TDS
+	elif chon == '3.1':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/ToolTDSFb.py').text)
+	elif chon == '3.2':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/ToolTDSPro5.py').text)
+	elif chon == '3.3':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/ToolTDSPro5v1.py').text)
+	elif chon == '3.4':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/ToolTDSTikTok.py').text)
+	elif chon == '3.5':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/TDSIG.py').text)
+	elif chon == '3.6':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TraoDoiSub/TDSIG.py').text)	
+		# Buff view
+	elif chon == '4.1':
+		# Thanh Công
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/bufffl.py').text)
+	elif chon == '4.2':
+		# Thanh Công
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/buffmemfb.py').text)
+	elif chon == '4.3':
+		# Thanh Công
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/buffmemtele.py').text)
+	elif chon == '4.4':
+		# Thanh Công
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/buffreactstr.py.py').text)
+	elif chon == '4.5':
+		# Thanh Công
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/buffview.py').text)
+	elif chon == '4.6':
+		# Thanh Công
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/viewtik.py').text)
+	elif chon == '5.1':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/mailer/genmailv1.py').text)
+	elif chon == '5.2':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/mailer/genmailv2.py').text)
+	elif chon == '5.3':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv1.py').text)
+	elif chon == '5.4':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv2.py').text)
+	elif chon == '5.5':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv3.py').text)
+	elif chon == '5.6':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv4.py').text) 
+	elif chon == '6.1':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spambox.py').text)
+	elif chon == '6.2':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamcmt.py').text)
+	elif chon == '6.3':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spammess.py').text)
+	elif chon == '6.4':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamsms.py').text)
+	elif chon == '7.1':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoAirdrop/ToolBlum.py').text)
+	elif chon == '7.2':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoAirdrop/ToolBlum.py').text)
+	elif chon == '7.3':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoAirdrop/ToolBlum.py').text)
+	elif chon == '7.4':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoAirdrop/ToolBlum.py').text)
+	elif chon == '8.1':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetidFacebook.py').text)
+	elif chon == '8.2':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolGetTokenFB.py').text)
+	elif chon == '8.3':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolSpamMessage.py').text)
+	elif chon == '8.4':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
+	elif chon == '8.5':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/urllink.py').text)
+	elif chon == '8.6':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/vidtiktok.py').text) 
+	elif chon == '8.7':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/vidytb.py').text)
+	elif chon == '8.8':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ToolDaoMail.py').text)
+	elif chon == '8.9':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/TienIchFaceBook/ThoatTool.py').text)          
+	else:
+		sys.exit("")
