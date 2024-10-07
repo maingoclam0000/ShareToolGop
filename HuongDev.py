@@ -97,8 +97,9 @@ def banner():
   sleep(0.000001)
 def get_ip_address():
     try:
-        hostname = socket.gethostname()
-        ip_address = socket.gethostbyname(hostname)
+        response = requests.get('https://api.ipify.org?format=json')
+        ip_data = response.json()  # Trả về từ điển JSON
+        ip_address = ip_data['ip']  # Lấy giá trị từ trường 'ip'
         return ip_address
     except Exception as e:
         print(f"Lỗi khi lấy địa chỉ IP: {e}")
@@ -316,7 +317,7 @@ if __name__ == '__main__':
 
 while True:
     try:
-        exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/index.py').text)
+        exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/index.py').text)
     except KeyboardInterrupt:
-        print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
+        print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
         sys.exit()
