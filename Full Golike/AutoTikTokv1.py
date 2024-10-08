@@ -29,96 +29,45 @@ os.system('cls' if os.name== 'nt' else 'clear')
 for x in banner:
   print(x,end = "")
   sleep(0.001)
-print("\033[1;31mYouTube : \033[1;33mHuong .Com \033[1;33mDev\033[1;32m")   
-
-try:
-    # Tạo file nếu chưa tồn tại
-    Authorization = open("Authorization.txt", "x")
-    t = open("token.txt", "x")
-except:
-    pass
-
-# Đọc file Authorization và token
-Authorization = open("Authorization.txt", "r")
-t = open("token.txt", "r")
-author = Authorization.read()
-token = t.read()
-
-# Nếu file rỗng, yêu cầu nhập từ người dùng
-if author == "":
-    author = input("\033[1;97mNHẬP AUTHORIZATION : ")
-    token = input("\033[1;31mNHẬP T : ")
-    Authorization = open("Authorization.txt", "w")
-    t = open("token.txt", "w")
-    Authorization.write(author)
-    t.write(token)
-else:
-    # Cho phép người dùng thay đổi AUTHORIZATION nếu cần
-    select = input("\033[1;97m║ Đăng\033[1;96m Nhập \033[1;95mTài \033[1;94mKhoản \033[1;93mHiện \033[1;92mCó\033[1;91m ( Enter Để Bỏ Qua ,Nhập AUTHORIZATION Tại Đây \033[1;97m║\033[1;91m Để Đổi )  \n\033[1;97m╚⟩⟩⟩ ")
-
-    if select != "":
-        author = select
-        token = input("\033[1;36mNhập T : ")
-        Authorization = open("Authorization.txt", "w")
-        t = open("token.txt", "w")
-        Authorization.write(author)
-        t.write(token)
-
-# Đóng các tệp
-Authorization.close()
-t.close()
-
-# Kiểm tra và khởi tạo headers
-if author and token:
-    headers = {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json;charset=utf-8',
-        'Authorization': author,
-        't': token,
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
-        'Referer': 'https://app.golike.net/account/manager/tiktok',
-    }
-    print("Headers đã được khởi tạo: ", headers)
-else:
-    print("Lỗi: AUTHORIZATION hoặc token chưa được nhập!")
+print("\033[1;31mYouTube : \033[1;33mHuong \033[1;33mDev\033[1;32m")   
 
     # Nhập auth
-# try:
-#   Authorization = open("Authorization.txt","x")
-#   t = open("token.txt","x")
-# except:
-#   pass
-# Authorization = open("Authorization.txt","r")
-# t = open("token.txt","r")
-# author = Authorization.read()
-# token = t.read()
-# if author == "":
-#   author = input("\033[1;97mNHẬP AUTHORIZATION : ")
-#   token = input("\033[1;31mNHẬP T : ")
-#   Authorization = open("Authorization.txt","w")
-#   t = open("token.txt","w")
-#   Authorization.write(author)
-#   t.write(token)
-# else:
-#   select = input("\033[1;97m║ Đăng\033[1;96m Nhập \033[1;95mTài \033[1;94mKhoản \033[1;93mHiện \033[1;92mCó\033[1;91m ( Enter Để Bỏ Qua ,Nhập AUTHORIZATION Tại Đây \033[1;97m║\033[1;91m Để Đổi )  \n\033[1;97m╚⟩⟩⟩ ")
+try:
+  Authorization = open("Authorization.txt","x")
+  t = open("token.txt","x")
+except:
+  pass
+Authorization = open("Authorization.txt","r")
+t = open("token.txt","r")
+author = Authorization.read()
+token = t.read()
+if author == "":
+  author = input("\033[1;97mNHẬP AUTHORIZATION : ")
+  token = input("\033[1;31mNHẬP T : ")
+  Authorization = open("Authorization.txt","w")
+  t = open("token.txt","w")
+  Authorization.write(author)
+  t.write(token)
+else:
+  select = input("\033[1;97m║ Đăng\033[1;96m Nhập \033[1;95mTài \033[1;94mKhoản \033[1;93mHiện \033[1;92mCó\033[1;91m ( Enter Để Bỏ Qua ,Nhập AUTHORIZATION Tại Đây \033[1;97m║\033[1;91m Để Đổi )  \n\033[1;97m╚⟩⟩⟩ ")
 
-#   if select != "":
-#     author = select
-#     token = input("\033[1;36mNhập T : ")
-#     Authorization = open("Authorization.txt","w")
-#     t = open("token.txt","w")
-#     Authorization.write(author)
-#     t.write(token)
-# Authorization.close()
-# t.close()
-# headers = {
-#     'Accept': 'application/json, text/plain, */*',
-#     'Content-Type': 'application/json;charset=utf-8',
-#     'Authorization': author,
-#     't': token,
-#     'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
-#     'Referer': 'https://app.golike.net/account/manager/tiktok',
-# }
+  if select != "":
+    author = select
+    token = input("\033[1;36mNhập T : ")
+    Authorization = open("Authorization.txt","w")
+    t = open("token.txt","w")
+    Authorization.write(author)
+    t.write(token)
+Authorization.close()
+t.close()
+headers = {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json;charset=utf-8',
+    'Authorization': author,
+    't': token,
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+    'Referer': 'https://app.golike.net/account/manager/tiktok',
+}
 
 
 def chonacc():
