@@ -25,49 +25,100 @@ banner = """
 \033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Telegram\033[1;31m : \033[1;97m☞\033[1;32mhttps://t.me/+77MuosyD-yk4MGY1🔫\033[1;97m☜
 \033[97m════════════════════════════════════════════════
 """
-os.system("clear")
+os.system('cls' if os.name== 'nt' else 'clear')
 for x in banner:
   print(x,end = "")
   sleep(0.001)
-print("\033[1;31mYouTube : \033[1;33mHuong \033[1;33mDev\033[1;32m")   
+print("\033[1;31mYouTube : \033[1;33mHuong .Com \033[1;33mDev\033[1;32m")   
 
-    # Nhập auth
 try:
-  Authorization = open("Authorization.txt","x")
-  t = open("token.txt","x")
+    # Tạo file nếu chưa tồn tại
+    Authorization = open("Authorization.txt", "x")
+    t = open("token.txt", "x")
 except:
-  pass
-Authorization = open("Authorization.txt","r")
-t = open("token.txt","r")
+    pass
+
+# Đọc file Authorization và token
+Authorization = open("Authorization.txt", "r")
+t = open("token.txt", "r")
 author = Authorization.read()
 token = t.read()
-if author == "":
-  author = input("\033[1;97mNHẬP AUTHORIZATION : ")
-  token = input("\033[1;31mNHẬP T : ")
-  Authorization = open("Authorization.txt","w")
-  t = open("token.txt","w")
-  Authorization.write(author)
-  t.write(token)
-else:
-  select = input("\033[1;97m║ Đăng\033[1;96m Nhập \033[1;95mTài \033[1;94mKhoản \033[1;93mHiện \033[1;92mCó\033[1;91m ( Enter Để Bỏ Qua ,Nhập AUTHORIZATION Tại Đây \033[1;97m║\033[1;91m Để Đổi )  \n\033[1;97m╚⟩⟩⟩ ")
 
-  if select != "":
-    author = select
-    token = input("\033[1;36mNhập T : ")
-    Authorization = open("Authorization.txt","w")
-    t = open("token.txt","w")
+# Nếu file rỗng, yêu cầu nhập từ người dùng
+if author == "":
+    author = input("\033[1;97mNHẬP AUTHORIZATION : ")
+    token = input("\033[1;31mNHẬP T : ")
+    Authorization = open("Authorization.txt", "w")
+    t = open("token.txt", "w")
     Authorization.write(author)
     t.write(token)
+else:
+    # Cho phép người dùng thay đổi AUTHORIZATION nếu cần
+    select = input("\033[1;97m║ Đăng\033[1;96m Nhập \033[1;95mTài \033[1;94mKhoản \033[1;93mHiện \033[1;92mCó\033[1;91m ( Enter Để Bỏ Qua ,Nhập AUTHORIZATION Tại Đây \033[1;97m║\033[1;91m Để Đổi )  \n\033[1;97m╚⟩⟩⟩ ")
+
+    if select != "":
+        author = select
+        token = input("\033[1;36mNhập T : ")
+        Authorization = open("Authorization.txt", "w")
+        t = open("token.txt", "w")
+        Authorization.write(author)
+        t.write(token)
+
+# Đóng các tệp
 Authorization.close()
 t.close()
-headers = {
-    'Accept': 'application/json, text/plain, */*',
-    'Content-Type': 'application/json;charset=utf-8',
-    'Authorization': author,
-    't': token,
-    'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
-    'Referer': 'https://app.golike.net/account/manager/tiktok',
-}
+
+# Kiểm tra và khởi tạo headers
+if author and token:
+    headers = {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json;charset=utf-8',
+        'Authorization': author,
+        't': token,
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+        'Referer': 'https://app.golike.net/account/manager/tiktok',
+    }
+    print("Headers đã được khởi tạo: ", headers)
+else:
+    print("Lỗi: AUTHORIZATION hoặc token chưa được nhập!")
+
+    # Nhập auth
+# try:
+#   Authorization = open("Authorization.txt","x")
+#   t = open("token.txt","x")
+# except:
+#   pass
+# Authorization = open("Authorization.txt","r")
+# t = open("token.txt","r")
+# author = Authorization.read()
+# token = t.read()
+# if author == "":
+#   author = input("\033[1;97mNHẬP AUTHORIZATION : ")
+#   token = input("\033[1;31mNHẬP T : ")
+#   Authorization = open("Authorization.txt","w")
+#   t = open("token.txt","w")
+#   Authorization.write(author)
+#   t.write(token)
+# else:
+#   select = input("\033[1;97m║ Đăng\033[1;96m Nhập \033[1;95mTài \033[1;94mKhoản \033[1;93mHiện \033[1;92mCó\033[1;91m ( Enter Để Bỏ Qua ,Nhập AUTHORIZATION Tại Đây \033[1;97m║\033[1;91m Để Đổi )  \n\033[1;97m╚⟩⟩⟩ ")
+
+#   if select != "":
+#     author = select
+#     token = input("\033[1;36mNhập T : ")
+#     Authorization = open("Authorization.txt","w")
+#     t = open("token.txt","w")
+#     Authorization.write(author)
+#     t.write(token)
+# Authorization.close()
+# t.close()
+# headers = {
+#     'Accept': 'application/json, text/plain, */*',
+#     'Content-Type': 'application/json;charset=utf-8',
+#     'Authorization': author,
+#     't': token,
+#     'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
+#     'Referer': 'https://app.golike.net/account/manager/tiktok',
+# }
 
 
 def chonacc():
@@ -134,24 +185,15 @@ def dsacc():
     print(f'\033[1;97m•[✩]➭\033[1;36m [{i+1}] \033[1;91m=> \033[1;97mTên Tài Khoản┊\033[1;32m㊪ :\033[1;93m {chontktiktok["data"][i]["nickname"]}  ')
    
 dsacc() 
-headers = {}  # Khởi tạo biến headers rỗng trước khi vòng lặp bắt đầu
-
 while True:
-    try:
-        luachon = int(input("\033[1;35m\033[1;97m║ Chọn \033[1;96mTài \033[1;95mKhoản Hướng \033[1;94mĐể \033[1;93mChạy \n\033[1;97m╚⟩⟩⟩ "))
-        while luachon > len((chontktiktok)["data"]):
-            luachon = int(input("\033[1;32mAcc Này Không Có Trong Danh Sách , Hãy Nhập Lại : "))
-        account_id = chontktiktok["data"][luachon - 1]["id"]
-
-        # Gán giá trị cho headers sau khi chọn tài khoản
-        headers = {
-            'Authorization': f'Bearer {account_id}',
-            'Content-Type': 'application/json'
-        }
-        break  # Thoát khỏi vòng lặp sau khi chọn tài khoản thành công
-
-    except:
-        print("\033[1;35mSai Định Dạng !!!")
+  try:
+    luachon = int(input("\033[1;35m\033[1;97m║ Chọn \033[1;96mTài \033[1;95mKhoản \033[1;94mĐể \033[1;93mChạy \n\033[1;97m╚⟩⟩⟩ "))
+    while luachon > len((chontktiktok)["data"]):
+      luachon = int(input("\033[1;32mAcc Này Không Có Trong Danh Sách , Hãy Nhập Lại : "))
+    account_id = chontktiktok["data"][luachon - 1]["id"]
+    break  
+  except:
+    print("\033[1;35mSai Định Dạng !!!") 
 while True:
   try:
     delay = int(input("\033[1;97m║ Nhập\033[1;91m Delay \n\033[1;97m╚⟩⟩⟩ "))
@@ -164,13 +206,13 @@ while True:
     break
   except:
     print("\033[1;31mNhập Vào 1 Số!!!")    
-os.system("clear")    
+os.system('cls' if os.name== 'nt' else 'clear')    
 dem = 0
 tong = 0
 checkdoiacc = 0
 dsaccloi = []
 accloi = ""
-os.system("clear")
+os.system('cls' if os.name== 'nt' else 'clear')
 
 for x in banner:
   print(x,end = "")
