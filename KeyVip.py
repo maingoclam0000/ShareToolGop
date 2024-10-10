@@ -5,11 +5,11 @@ try :
     import os 
     from art import *
     from colorama import Fore
-    import time
+    from time import sleep
     import json
     import random
     from tabulate import tabulate
-    import re
+    import sys
     import requests
     from random_user_agent.user_agent import UserAgent
     from random_user_agent.params import SoftwareName, OperatingSystem
@@ -23,23 +23,23 @@ software_names = [SoftwareName.CHROME.value]
 operating_systems = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value]   
 user_agent_rotator = UserAgent(software_names=software_names, operating_systems=operating_systems, limit=100)
 
-def checkproxy(proxyy):
-    try:
-        ip = requests.get('https://api.ipify.org?format=json',proxies=proxyy).json()
-        print(Fore.RED+'IP CUA BAN : '+Fore.GREEN+str(ip['ip']))
-        return True
-    except :
-        print('SAI USERNAME HOAC PASSWORD')
-        os.remove('usernameproxy.txt')
-        os.remove('PASSWORD.txt')
-        return 0
 def countdown(time_sec):
-    while time_sec:
-        mins, secs = divmod(time_sec, 60)
-        timeformat = 'VUI LONG CHO : {:02d}'.format(secs)
-        print(timeformat, end='\r')
-        time.sleep(1)
-        time_sec -= 1
+    for remaining_time in range(time_sec, -1, -1):
+        colors = [
+            "\033[1;37mH\033[1;36mu\033[1;35mo\033[1;32mn\033[1;31mg \033[1;34mD\033[1;33me\033[1;36mv\033[1;36m🍉 - Tool\033[1;36m Vip \033[1;31m\033[1;32m",
+            "\033[1;34mH\033[1;31mu\033[1;37mo\033[1;36mn\033[1;32mg \033[1;35mD\033[1;37me\033[1;33mv\033[1;32m🍉 - Tool\033[1;34m Vip \033[1;31m\033[1;32m",
+            "\033[1;31mH\033[1;37mu\033[1;36mo\033[1;33mn\033[1;35mg \033[1;32mD\033[1;34me\033[1;35mv\033[1;37m🍉 - Tool\033[1;33m Vip \033[1;31m\033[1;32m",
+            "\033[1;32mH\033[1;33mu\033[1;34mo\033[1;35mn\033[1;36mg \033[1;37mD\033[1;36me\033[1;31mv\033[1;34m🍉 - Tool\033[1;31m Vip \033[1;31m\033[1;32m",
+            "\033[1;37mH\033[1;34mu\033[1;35mo\033[1;36mn\033[1;32mg \033[1;33mD\033[1;31me\033[1;37mv\033[1;34m🍉 - Tool\033[1;37m Vip \033[1;31m\033[1;32m",
+            "\033[1;34mH\033[1;33mu\033[1;37mo\033[1;35mn\033[1;31mg \033[1;36mD\033[1;36me\033[1;32mv\033[1;37m🍉 - Tool\033[1;36m Vip \033[1;31m\033[1;32m",
+            "\033[1;36mH\033[1;35mu\033[1;31mo\033[1;34mn\033[1;37mg \033[1;35mD\033[1;32me\033[1;36mv\033[1;33m🍉 - Tool\033[1;33m Vip \033[1;31m\033[1;32m",
+        ]
+        for color in colors:
+            print(f"\r{color}|{remaining_time}| \033[1;31m", end="")
+            time.sleep(0.12)
+                                  
+    print("\r                          \r", end="") 
+    print("\033[1;35mĐang Nhận Tiền         ",end = "\r")
 def TIKTOKINFO():
     url1_2 = 'https://gateway.golike.net/api/tiktok-account'
     checkurl1_2 = ses.get(url1_2,headers=headers).json()
@@ -70,20 +70,10 @@ def TIKTOKINFO():
         account_id1 = account_id1[choose-1:choose]
         user_tiktok = user_tiktok1[0] 
         account_id = account_id1[0]
-        tprint("DENO","rnd-xlarge")
-        print(Fore.RED+'\t\tTOOL BY DENO')
-        print('EMAIL : VINHYTB3010@gmail.com')
-        print('ZALO : 0961442667')
-        print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-        print('WEBSITE : https://profiledeno.netlify.app/')
+        banner()
         choose = int(input(Fore.RED+'NHAP SO LUONG JOB : '))
         os.system('cls' if os.name== 'nt' else 'clear')
-        tprint("DENO","rnd-xlarge")
-        print(Fore.RED+'\t\tTOOL BY DENO')
-        print('EMAIL : VINHYTB3010@gmail.com')
-        print('ZALO : 0961442667')
-        print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-        print('WEBSITE : https://profiledeno.netlify.app/')
+        banner()
         DELAY = int(input(Fore.RED+'NHAP DELAY : '))
         for i in range(choose):
             url2 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/jobs?account_id='+str(account_id)+'&data=null'
@@ -181,28 +171,34 @@ def TIKTOKINFO():
                     'async': 'true',
                     'data': 'null',
                     'type': type,
-                    }        
+                    }
+def banner():
+ os.system("cls" if os.name == "nt" else "clear")
+ banner = f"""
+\033[1;33m██      ██╗      ████████╗ █████╗  █████╗ ██╗
+\033[1;35m██╗    ╔██║      ╚══██╔══╝██╔══██╗██╔══██╗██║
+\033[1;36m██║████║██║ █████╗  ██║   ██║  ██║██║  ██║██║
+\033[1;37m██║    ╚██║ ╚════╝  ██║   ██║  ██║██║  ██║██║
+\033[1;32m██║     ██║         ██║   ╚█████╔╝╚█████╔╝██████╗
+\033[1;31m╚═╝     ╚═╝         ╚═╝    ╚════╝  ╚════╝ ╚═════╝\n
+\033[1;97mTool By: \033[1;32mTrịnh Hướng            \033[1;97mPhiên Bản: \033[1;32m4.0     
+\033[97m════════════════════════════════════════════════  
+\033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Tool\033[1;31m     : \033[1;97m☞ \033[1;31mGolike - Tik Tok\033[1;33m♔ \033[1;97m🔫
+\033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Youtube\033[1;31m  : \033[1;97m☞ \033[1;36mHướng Dev - Kiếm Tiền Online\033[1;31m♔ \033[1;97m☜
+\033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Tik Tok\033[1;31m  : \033[1;33mhttps:\033[1;32m//www.tiktok.com\033[1;31m/m@huongdev27
+\033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Zalo\033[1;31m     : \033[1;97m☞\033[1;31m0\033[1;37m3\033[1;36m6\033[1;35m2\033[1;34m1\033[1;33m6\033[1;33m6\033[1;34m8\033[1;35m6\033[1;37m3☜
+\033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Telegram\033[1;31m : \033[1;97m☞\033[1;32mhttps://t.me/+77MuosyD-yk4MGY1🔫\033[1;97m☜
+\033[97m════════════════════════════════════════════════
+"""
+ for X in banner:
+  sys.stdout.write(X)
+  sys.stdout.flush() 
+  sleep(0.00125)        
 def LIST():
-    mydata = [
-        [Fore.RED+"1", "  Tiktok                ",Fore.GREEN+"  MOBILE"+Fore.RED],
-        [Fore.RED+"2", "  Twitter/X             ",Fore.GREEN+"  PC+MOBILE"+Fore.RED], 
-        [Fore.RED+"3", "  Instagram             ",Fore.GREEN+"  PC+MOBILE"+Fore.RED], 
-        [Fore.RED+"4", "  Linkedin              ",Fore.GREEN+"  PC+MOBILE"+Fore.RED],
-        [Fore.RED+"5", "  Threads               ",Fore.GREEN+"  PC+MOBILE"+Fore.RED],
-        [Fore.RED+"6", "  YOUTUBE               ",Fore.GREEN+"  PC+MOBILE"+Fore.RED]
-    ]
-    
-    # create header
-    head = ["STT", "  TOOL","   STATUS"]
-    LIST=Fore.RED+tabulate(mydata, headers=head, tablefmt="grid",)
-    print(LIST)
+    banner()
+    print("\033[1;32mNhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool TikTok\033[1;33m")
 os.system('cls' if os.name== 'nt' else 'clear')
-tprint("DENO","rnd-xlarge")
-print(Fore.RED+'\t\tTOOL BY DENO')
-print('EMAIL : VINHYTB3010@gmail.com')
-print('ZALO : 0961442667')
-print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-print('WEBSITE : https://profiledeno.netlify.app/')
+banner()
 checkfile = os.path.isfile('user.txt')
 if checkfile == False:
     AUTHUR = input(Fore.GREEN+'[+]''NHAP Authorization : ')
@@ -493,40 +489,28 @@ except requests.exceptions.InvalidHeader:
 if checkurl1['status']== 200 :
         print('DANG NHAP THANH CONG')
         time.sleep(3)
+        # os.system('cls' if os.name== 'nt' else 'clear')
+        # print(Fore.BLUE+'1.TOOL GOLIKE')
+        # choose = int(input(Fore.WHITE+'\n\n\n\n\nNHAP LUA CHON : '))
+        # if choose == 1 :
         os.system('cls' if os.name== 'nt' else 'clear')
-        print(Fore.BLUE+'1.TOOL GOLIKE')
-        choose = int(input(Fore.WHITE+'\n\n\n\n\nNHAP LUA CHON : '))
-        if choose == 1 :
-            os.system('cls' if os.name== 'nt' else 'clear')
-            tprint("DENO","rnd-xlarge")
-            print(Fore.RED+'\t\tTOOL BY DENO')
-            print('EMAIL : VINHYTB3010@gmail.com')
-            print('ZALO : 0961442667')
-            print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-            print('WEBSITE : https://profiledeno.netlify.app/')
-            os.system('cls' if os.name== 'nt' else 'clear')
-            tprint("DENO","rnd-xlarge")
-            print(Fore.RED+'\t\tTOOL BY DENO')
-            print('EMAIL : VINHYTB3010@gmail.com')
-            print('ZALO : 0961442667')
-            print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-            print('WEBSITE : https://profiledeno.netlify.app/')
-            ses.headers.update(headers)
-            username = checkurl1['data']['username']
-            coin = checkurl1['data']['coin']
-            user_id = checkurl1['data']['id']
-            print('________________________________________________________')
-            print(Fore.GREEN+'[+] USERNAME : '+Fore.YELLOW+username)
-            print(Fore.GREEN+'[+] TIEN : '+Fore.YELLOW+str(coin))
-            print(Fore.RED+'_________________________________________________________')
-            LIST()
-            print(Fore.RED+'[+] 0.Xoa Authorization Hien Tai')
-            choose = int(input(Fore.WHITE+'\n\n\n\n\nNHAP LUA CHON : '))
-            if choose==1:
-                 os.system('cls' if os.name== 'nt' else 'clear')
-                 TIKTOKINFO()
-            elif choose == 0:
-                 os.remove('user.txt')
+        banner()
+        ses.headers.update(headers)
+        username = checkurl1['data']['username']
+        coin = checkurl1['data']['coin']
+        user_id = checkurl1['data']['id']
+        print('________________________________________________________')
+        print(Fore.GREEN+'[+] USERNAME : '+Fore.YELLOW+username)
+        print(Fore.GREEN+'[+] TIEN : '+Fore.YELLOW+str(coin))
+        print(Fore.RED+'_________________________________________________________')
+        LIST()
+        print(Fore.RED+'Nhập 2 Để Xóa Authorization Hiện Tại')
+        choose = int(input(Fore.WHITE+'Nhập Lựa Chọn : '))
+        if choose==1:
+                os.system('cls' if os.name== 'nt' else 'clear')
+                TIKTOKINFO()
+        elif choose == 2:
+                os.remove('user.txt')
 else:
     print(Fore.RED+'DANG NHAP THAT BAI')
     os.remove('user.txt')
