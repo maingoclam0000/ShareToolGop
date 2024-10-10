@@ -223,7 +223,7 @@ while True:
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/proxy/genproxyv4.py').text) 
 	elif chon == '6.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spambox.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeyVip.py').text)
 	elif chon == '6.2':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamcmt.py').text)
