@@ -226,7 +226,7 @@ while True:
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeyVip.py').text)
 	elif chon == '6.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spamcmt.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeyVip.py').text)
 	elif chon == '6.3':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/spam/spammess.py').text)
