@@ -47,23 +47,28 @@ def TIKTOKINFO():
     account_id1 = []
     STT = []
     STATUS =[]
-    print('CAC TAI KHOAN DANG HOAT DONG')
-    i=1
-    head = ["STT", "  ACCOUNT","   STATUS"]
+    tong = 0
+    dem = 0
+    i = 1
     # LIST=Fore.RED+tabulate(mydata, headers=head, tablefmt="grid",)
-    for data in checkurl1_2['data'] :
+    for data in checkurl1_2['data']:
         usernametk = data['nickname']
-        # print(str(i)+'.'+usernametk)
-        user_tiktok1.append(data['nickname'])
-        account_id1.append(data['id'])
+        account_id = data['id']
+        
+        print(f'{i}. {usernametk}')
+        
+        user_tiktok1.append(usernametk)
+        account_id1.append(account_id)
         STT.append(i)
-        STATUS.append(Fore.GREEN+"DANG HOAT DONG"+Fore.RED)
-    # create header
-        i=i+1
-    table = zip(STT,user_tiktok1,STATUS)
-    LIST=Fore.RED+tabulate(table, headers=head, tablefmt="grid",)   
-    print(LIST)
-    choose = int(input('NHAP TAI KHOAN : '))
+        STATUS.append(Fore.GREEN + "Hoạt Động" + Fore.RESET)  # Sử dụng Fore.RESET để trả lại màu gốc
+        
+        print(f'\033[1;97m•[✩]➭\033[1;36m [{i}] \033[1;91m=> \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;91m=> \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
+        
+        i += 1
+
+    print(Fore.RED + '_________________________________________________________' + Fore.RESET)
+
+    choose = int(input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Tài Khoản: '))
     os.system('cls' if os.name== 'nt' else 'clear')
     if choose >=1 or choose <= len(user_tiktok1) :
         user_tiktok1 = user_tiktok1[choose-1:choose]
@@ -490,47 +495,73 @@ try:
 except requests.exceptions.InvalidHeader:
     os.remove('user.txt')
     #user
+# if checkurl1['status']== 200 :
+#         print('DANG NHAP THANH CONG')
+#         time.sleep(3)
+#         os.system('cls' if os.name== 'nt' else 'clear')
+#         print(Fore.BLUE+'1.TOOL GOLIKE')
+#         choose = int(input(Fore.WHITE+'\n\n\n\n\nNHAP LUA CHON : '))
+#         if choose == 1 :
+#             os.system('cls' if os.name== 'nt' else 'clear')
+#             tprint("DENO","rnd-xlarge")
+#             print(Fore.RED+'\t\tTOOL BY DENO')
+#             print('EMAIL : VINHYTB3010@gmail.com')
+#             print('ZALO : 0961442667')
+#             print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
+#             print('WEBSITE : https://profiledeno.netlify.app/')
+#             os.system('cls' if os.name== 'nt' else 'clear')
+#             tprint("DENO","rnd-xlarge")
+#             print(Fore.RED+'\t\tTOOL BY DENO')
+#             print('EMAIL : VINHYTB3010@gmail.com')
+#             print('ZALO : 0961442667')
+#             print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
+#             print('WEBSITE : https://profiledeno.netlify.app/')
+#             ses.headers.update(headers)
+#             username = checkurl1['data']['username']
+#             coin = checkurl1['data']['coin']
+#             user_id = checkurl1['data']['id']
+#             print('________________________________________________________')
+#             print(Fore.GREEN+'[+] USERNAME : '+Fore.YELLOW+username)
+#             print(Fore.GREEN+'[+] TIEN : '+Fore.YELLOW+str(coin))
+#             print(Fore.RED+'_________________________________________________________')
+#             LIST()
+#             print(Fore.RED+'[+] 0.Xoa Authorization Hien Tai')
+#             choose = int(input(Fore.WHITE+'\n\n\n\n\nNHAP LUA CHON : '))
+#             if choose==1:
+#                  os.system('cls' if os.name== 'nt' else 'clear')
+#                  TIKTOKINFO()
+#             elif choose == 0:
+#                  os.remove('user.txt')
+# else:
+#     print(Fore.RED+'DANG NHAP THAT BAI')
+#     os.remove('user.txt')
 if checkurl1['status']== 200 :
         print('DANG NHAP THANH CONG')
         time.sleep(3)
         os.system('cls' if os.name== 'nt' else 'clear')
-        print(Fore.BLUE+'1.TOOL GOLIKE')
-        choose = int(input(Fore.WHITE+'\n\n\n\n\nNHAP LUA CHON : '))
-        if choose == 1 :
+        username = checkurl1['data']['username']
+        coin = checkurl1['data']['coin']
+        user_id = checkurl1['data']['id']
+        print('________________________________________________________')
+        print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
+        print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))
+        print(Fore.RED+'_________________________________________________________')
+        LIST()
+        print(Fore.RED+'Nhập 2 Để Xóa Authorization Hiện Tại')
+        choose = int(input(Fore.WHITE+'Nhập Lựa Chọn : '))
+        if choose == 1:
             os.system('cls' if os.name== 'nt' else 'clear')
-            tprint("DENO","rnd-xlarge")
-            print(Fore.RED+'\t\tTOOL BY DENO')
-            print('EMAIL : VINHYTB3010@gmail.com')
-            print('ZALO : 0961442667')
-            print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-            print('WEBSITE : https://profiledeno.netlify.app/')
-            os.system('cls' if os.name== 'nt' else 'clear')
-            tprint("DENO","rnd-xlarge")
-            print(Fore.RED+'\t\tTOOL BY DENO')
-            print('EMAIL : VINHYTB3010@gmail.com')
-            print('ZALO : 0961442667')
-            print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-            print('WEBSITE : https://profiledeno.netlify.app/')
-            ses.headers.update(headers)
-            username = checkurl1['data']['username']
-            coin = checkurl1['data']['coin']
-            user_id = checkurl1['data']['id']
-            print('________________________________________________________')
-            print(Fore.GREEN+'[+] USERNAME : '+Fore.YELLOW+username)
-            print(Fore.GREEN+'[+] TIEN : '+Fore.YELLOW+str(coin))
-            print(Fore.RED+'_________________________________________________________')
-            LIST()
-            print(Fore.RED+'[+] 0.Xoa Authorization Hien Tai')
-            choose = int(input(Fore.WHITE+'\n\n\n\n\nNHAP LUA CHON : '))
-            if choose==1:
-                 os.system('cls' if os.name== 'nt' else 'clear')
-                 TIKTOKINFO()
-            elif choose == 0:
-                 os.remove('user.txt')
+            # banner()
+            ip = requests.get('https://api.ipify.org?format=json').json()
+            print(Fore.GREEN + 'Danh Sách Tài Khoản'+ Fore.RED+'         Ip : '+Fore.GREEN+str(ip['ip']))
+            print(Fore.RED+'_________________________________________________________\n')
+
+            TIKTOKINFO()
+        elif choose == 2:
+                os.remove('user.txt')
 else:
     print(Fore.RED+'DANG NHAP THAT BAI')
     os.remove('user.txt')
-
 
 
 
