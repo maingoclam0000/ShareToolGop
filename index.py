@@ -136,7 +136,7 @@ while True:
 	print('\033[1;39m─────────────────────────────────────────────────────────── ')
 	if chon == '1':
 		# Thành Công
-		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/KeoGolikeVip/TikTokv1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTok.py').text)
 	elif chon == '1.1':
 		exec(requests.get('https://raw.githubusercontent.com/Huongdev2704/ShareToolGop/refs/heads/main/Full%20Golike/AutoTikTokv1.py').text)
 	elif chon == '1.2':

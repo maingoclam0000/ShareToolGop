@@ -33,148 +33,6 @@ def countdown(time_sec):
                                   
     print("\r                          \r", end="") 
     print("\033[1;35mĐang Nhận Tiền         ",end = "\r")
-def TIKTOKINFO():
-    url1_2 = 'https://gateway.golike.net/api/tiktok-account'
-    checkurl1_2 = ses.get(url1_2,headers=headers).json()
-    user_tiktok1 = []
-    account_id1 = []
-    STT = []
-    STATUS =[]
-    print('CAC TAI KHOAN DANG HOAT DONG')
-    i=1
-    head = ["STT", "  ACCOUNT","   STATUS"]
-    # LIST=Fore.RED+tabulate(mydata, headers=head, tablefmt="grid",)
-    for data in checkurl1_2['data'] :
-        usernametk = data['nickname']
-        # print(str(i)+'.'+usernametk)
-        user_tiktok1.append(data['nickname'])
-        account_id1.append(data['id'])
-        STT.append(i)
-        STATUS.append(Fore.GREEN+"DANG HOAT DONG"+Fore.RED)
-    # create header
-        i=i+1
-    table = zip(STT,user_tiktok1,STATUS)
-    LIST=Fore.RED+tabulate(table, headers=head, tablefmt="grid",)   
-    print(LIST)
-    choose = int(input('NHAP TAI KHOAN : '))
-    os.system('cls' if os.name== 'nt' else 'clear')
-    if choose >=1 or choose <= len(user_tiktok1) :
-        user_tiktok1 = user_tiktok1[choose-1:choose]
-        account_id1 = account_id1[choose-1:choose]
-        user_tiktok = user_tiktok1[0] 
-        account_id = account_id1[0]
-        tprint("DENO","rnd-xlarge")
-        print(Fore.RED+'\t\tTOOL BY DENO')
-        print('EMAIL : VINHYTB3010@gmail.com')
-        print('ZALO : 0961442667')
-        print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-        print('WEBSITE : https://profiledeno.netlify.app/')
-        choose = int(input(Fore.RED+'NHAP SO LUONG JOB : '))
-        os.system('cls' if os.name== 'nt' else 'clear')
-        tprint("DENO","rnd-xlarge")
-        print(Fore.RED+'\t\tTOOL BY DENO')
-        print('EMAIL : VINHYTB3010@gmail.com')
-        print('ZALO : 0961442667')
-        print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
-        print('WEBSITE : https://profiledeno.netlify.app/')
-        DELAY = int(input(Fore.RED+'NHAP DELAY : '))
-        for i in range(choose):
-            url2 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/jobs?account_id='+str(account_id)+'&data=null'
-            checkurl2 = ses.get(url2,headers=headers).json()
-            if checkurl2['status'] ==200:
-                linkjob = []
-                linkjob = str(checkurl2['data']['link'])
-                lenjob = len(checkurl2['data']['link'])
-                ads_id = checkurl2['data']['id']
-                object_id = checkurl2['data']['object_id']
-                type = checkurl2['data']['type']
-                # os.system("start "+linkjob+"")
-                os.system("termux-open-url "+str(linkjob[0:lenjob])+"")
-                PARAMS = {
-                        'ads_id' : ads_id,
-                        'account_id' : account_id,
-                        'object_id' : object_id ,
-                        'async': 'true',
-                        'data': 'null',
-                        'type': type,
-                        }
-                countdown(DELAY)
-                url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
-                time.sleep(1)
-                checkurl3 = ses.post(url3,params=PARAMS).json()
-                if checkurl3['status'] == 400 :
-
-                        time.sleep(2)
-
-                        url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
-                        checkurl3 = ses.post(url3,params=PARAMS).json()
-                        if checkurl3['status'] == 200:
-                                prices = checkurl3['data']['prices']
-                                print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
-                        else:
-
-                                    time.sleep(2)
-
-                                    url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
-                                    checkurl3 = ses.post(url3,params=PARAMS).json()
-                                    if checkurl3['status'] == 200:
-                                            prices = checkurl3['data']['prices']
-                                            print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
-                                    else:
-                                        time.sleep(2)
-
-                                        url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
-                                        checkurl3 = ses.post(url3,params=PARAMS).json()
-                                        if checkurl3['status'] == 200:
-                                                prices = checkurl3['data']['prices']
-                                                print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
-                                        else:
-                                            skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
-                                            checkskipjob = ses.post(skipjob,params=PARAMS).json()
-                                            if checkskipjob['status'] == 200:
-                                                message = checkskipjob['message']
-                                                print(Fore.RED+str(message))
-                                                PARAMSr = {
-                                                    'ads_id' : ads_id,
-                                                    'account_id' : account_id,
-                                                    'object_id' : object_id ,
-                                                    'async': 'true',
-                                                    'data': 'null',
-                                                    'type': type,
-                                                    }
-                elif checkurl3['status'] == 200:
-                    prices = checkurl3['data']['prices']
-                    print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
-                else :
-                    skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
-                    checkskipjob = ses.post(skipjob,params=PARAMS).json()
-                    if checkskipjob['status'] == 200:
-                        message = checkskipjob['message']
-                        print(Fore.RED+str(message))
-                        PARAMSr = {
-                        'ads_id' : ads_id,
-                        'account_id' : account_id,
-                        'object_id' : object_id ,
-                        'async': 'true',
-                        'data': 'null',
-                        'type': type,
-                        }
-            else : 
-                countdown(15)
-                print(checkurl2['message'])
-                skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
-                checkskipjob = ses.post(skipjob,params=PARAMS).json()
-                if checkskipjob['status'] == 200:
-                    message = checkskipjob['message']
-                    print(Fore.RED+str(message))
-                    PARAMSr = {
-                    'ads_id' : ads_id,
-                    'account_id' : account_id,
-                    'object_id' : object_id ,
-                    'async': 'true',
-                    'data': 'null',
-                    'type': type,
-                    }   
 # def TIKTOKINFO():
 #     url1_2 = 'https://gateway.golike.net/api/tiktok-account'
 #     checkurl1_2 = ses.get(url1_2,headers=headers).json()
@@ -182,40 +40,44 @@ def TIKTOKINFO():
 #     account_id1 = []
 #     STT = []
 #     STATUS =[]
-#     tong = 0
-#     dem = 0
-#     i = 1
+#     print('CAC TAI KHOAN DANG HOAT DONG')
+#     i=1
+#     head = ["STT", "  ACCOUNT","   STATUS"]
 #     # LIST=Fore.RED+tabulate(mydata, headers=head, tablefmt="grid",)
-#     for data in checkurl1_2['data']:
+#     for data in checkurl1_2['data'] :
 #         usernametk = data['nickname']
-#         account_id = data['id']
-        
-#         print(f'{i}. {usernametk}')
-        
-#         user_tiktok1.append(usernametk)
-#         account_id1.append(account_id)
+#         # print(str(i)+'.'+usernametk)
+#         user_tiktok1.append(data['nickname'])
+#         account_id1.append(data['id'])
 #         STT.append(i)
-#         STATUS.append(Fore.GREEN + "Hoạt Động" + Fore.RESET)  # Sử dụng Fore.RESET để trả lại màu gốc
-        
-#         print(f'\033[1;97m•[✩]➭\033[1;36m [{i}] \033[1;91m=> \033[1;97mTên Tài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;91m=> \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
-        
-#         i += 1
-
-#     print(Fore.RED + '_________________________________________________________' + Fore.RESET)
-
-#     choose = int(input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Tài Khoản: '))
+#         STATUS.append(Fore.GREEN+"DANG HOAT DONG"+Fore.RED)
+#     # create header
+#         i=i+1
+#     table = zip(STT,user_tiktok1,STATUS)
+#     LIST=Fore.RED+tabulate(table, headers=head, tablefmt="grid",)   
+#     print(LIST)
+#     choose = int(input('NHAP TAI KHOAN : '))
 #     os.system('cls' if os.name== 'nt' else 'clear')
 #     if choose >=1 or choose <= len(user_tiktok1) :
 #         user_tiktok1 = user_tiktok1[choose-1:choose]
 #         account_id1 = account_id1[choose-1:choose]
 #         user_tiktok = user_tiktok1[0] 
 #         account_id = account_id1[0]
+#         tprint("DENO","rnd-xlarge")
+#         print(Fore.RED+'\t\tTOOL BY DENO')
+#         print('EMAIL : VINHYTB3010@gmail.com')
+#         print('ZALO : 0961442667')
+#         print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
+#         print('WEBSITE : https://profiledeno.netlify.app/')
+#         choose = int(input(Fore.RED+'NHAP SO LUONG JOB : '))
 #         os.system('cls' if os.name== 'nt' else 'clear')
-#         banner()
-#         choose = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Số Lượng Job : '))
-#         os.system('cls' if os.name== 'nt' else 'clear')
-#         banner()
-#         DELAY = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Delay : '))
+#         tprint("DENO","rnd-xlarge")
+#         print(Fore.RED+'\t\tTOOL BY DENO')
+#         print('EMAIL : VINHYTB3010@gmail.com')
+#         print('ZALO : 0961442667')
+#         print('FACEBOOK : https://www.facebook.com/accngunghoatdongreal')
+#         print('WEBSITE : https://profiledeno.netlify.app/')
+#         DELAY = int(input(Fore.RED+'NHAP DELAY : '))
 #         for i in range(choose):
 #             url2 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/jobs?account_id='+str(account_id)+'&data=null'
 #             checkurl2 = ses.get(url2,headers=headers).json()
@@ -247,61 +109,17 @@ def TIKTOKINFO():
 #                         url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
 #                         checkurl3 = ses.post(url3,params=PARAMS).json()
 #                         if checkurl3['status'] == 200:
-#                             dem += 1
-#                             local_time = time.localtime()
-#                             hour = local_time.tm_hour
-#                             minute = local_time.tm_min
-#                             second = local_time.tm_sec
-
-#                             # Định dạng giờ, phút, giây
-#                             h = f"{hour:02d}"
-#                             m = f"{minute:02d}"
-#                             s = f"{second:02d}"
-#                             prices = checkurl3['data']['prices']
-
-#                             # Cộng dồn giá trị prices vào tổng tiền
-#                             tong += prices
-
-#                             chuoi = (
-#                                 f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
-#                                 f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
-#                                 f"\033[1;32msuccess\033[1;31m\033[1;97m | "
-#                                 f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
-#                                 f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
-#                                 f"\033[1;33m{tong} vnđ"
-#                             )
-#                             print(chuoi) 
+#                                 prices = checkurl3['data']['prices']
+#                                 print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
 #                         else:
 
 #                                     time.sleep(2)
 
 #                                     url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
 #                                     checkurl3 = ses.post(url3,params=PARAMS).json()
-#                                     if checkurl3['success'] == True:
-#                                         dem += 1
-#                                         local_time = time.localtime()
-#                                         hour = local_time.tm_hour
-#                                         minute = local_time.tm_min
-#                                         second = local_time.tm_sec
-
-#                                         # Định dạng giờ, phút, giây
-#                                         h = f"{hour:02d}"
-#                                         m = f"{minute:02d}"
-#                                         s = f"{second:02d}"
-#                                         prices = checkurl3['data']['prices']
-
-#                                         # Cộng dồn giá trị prices vào tổng tiền
-#                                         tong += prices
-
-#                                         chuoi = (
-#                                             f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
-#                                             f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
-#                                             f"\033[1;32msuccess\033[1;31m\033[1;97m | "
-#                                             f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
-#                                             f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
-#                                             f"\033[1;33m{tong} vnđ"
-#                                         )
-#                                         print(chuoi) 
+#                                     if checkurl3['status'] == 200:
+#                                             prices = checkurl3['data']['prices']
+#                                             print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
 #                                     else:
 #                                         time.sleep(2)
 
@@ -325,30 +143,8 @@ def TIKTOKINFO():
 #                                                     'type': type,
 #                                                     }
 #                 elif checkurl3['status'] == 200:
-#                     dem += 1
-#                     local_time = time.localtime()
-#                     hour = local_time.tm_hour
-#                     minute = local_time.tm_min
-#                     second = local_time.tm_sec
-
-#                     # Định dạng giờ, phút, giây
-#                     h = f"{hour:02d}"
-#                     m = f"{minute:02d}"
-#                     s = f"{second:02d}"
 #                     prices = checkurl3['data']['prices']
-
-#                     # Cộng dồn giá trị prices vào tổng tiền
-#                     tong += prices
-
-#                     chuoi = (
-#                         f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
-#                         f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
-#                         f"\033[1;32msuccess\033[1;31m\033[1;97m | "
-#                         f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
-#                         f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
-#                         f"\033[1;33m{tong} vnđ"
-#                     )
-#                     print(chuoi) 
+#                     print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
 #                 else :
 #                     skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
 #                     checkskipjob = ses.post(skipjob,params=PARAMS).json()
@@ -378,7 +174,211 @@ def TIKTOKINFO():
 #                     'async': 'true',
 #                     'data': 'null',
 #                     'type': type,
-#                     } 
+#                     }   
+def TIKTOKINFO():
+    url1_2 = 'https://gateway.golike.net/api/tiktok-account'
+    checkurl1_2 = ses.get(url1_2,headers=headers).json()
+    user_tiktok1 = []
+    account_id1 = []
+    STT = []
+    STATUS =[]
+    tong = 0
+    dem = 0
+    i = 1
+    # LIST=Fore.RED+tabulate(mydata, headers=head, tablefmt="grid",)
+    for data in checkurl1_2['data']:
+        usernametk = data['nickname']
+        account_id = data['id']
+        
+        print(f'{i}. {usernametk}')
+        
+        user_tiktok1.append(usernametk)
+        account_id1.append(account_id)
+        STT.append(i)
+        STATUS.append(Fore.GREEN + "Hoạt Động" + Fore.RESET)  # Sử dụng Fore.RESET để trả lại màu gốc
+        
+        print(f'\033[1;97m•[✩]➭\033[1;36m [{i}] \033[1;91m=> \033[1;97mTên Tài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;91m=> \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
+        
+        i += 1
+
+    print(Fore.RED + '_________________________________________________________' + Fore.RESET)
+
+    choose = int(input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Tài Khoản: '))
+    os.system('cls' if os.name== 'nt' else 'clear')
+    if choose >=1 or choose <= len(user_tiktok1) :
+        user_tiktok1 = user_tiktok1[choose-1:choose]
+        account_id1 = account_id1[choose-1:choose]
+        user_tiktok = user_tiktok1[0] 
+        account_id = account_id1[0]
+        os.system('cls' if os.name== 'nt' else 'clear')
+        banner()
+        choose = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Số Lượng Job : '))
+        os.system('cls' if os.name== 'nt' else 'clear')
+        banner()
+        DELAY = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Delay : '))
+        for i in range(choose):
+            url2 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/jobs?account_id='+str(account_id)+'&data=null'
+            checkurl2 = ses.get(url2,headers=headers).json()
+            if checkurl2['status'] ==200:
+                linkjob = []
+                linkjob = str(checkurl2['data']['link'])
+                lenjob = len(checkurl2['data']['link'])
+                ads_id = checkurl2['data']['id']
+                object_id = checkurl2['data']['object_id']
+                type = checkurl2['data']['type']
+                # os.system("start "+linkjob+"")
+                os.system("termux-open-url "+str(linkjob[0:lenjob])+"")
+                PARAMS = {
+                        'ads_id' : ads_id,
+                        'account_id' : account_id,
+                        'object_id' : object_id ,
+                        'async': 'true',
+                        'data': 'null',
+                        'type': type,
+                        }
+                countdown(DELAY)
+                url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
+                time.sleep(1)
+                checkurl3 = ses.post(url3,params=PARAMS).json()
+                if checkurl3['status'] == 400 :
+
+                        time.sleep(2)
+
+                        url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
+                        checkurl3 = ses.post(url3,params=PARAMS).json()
+                        if checkurl3['status'] == 200:
+                            dem += 1
+                            local_time = time.localtime()
+                            hour = local_time.tm_hour
+                            minute = local_time.tm_min
+                            second = local_time.tm_sec
+
+                            # Định dạng giờ, phút, giây
+                            h = f"{hour:02d}"
+                            m = f"{minute:02d}"
+                            s = f"{second:02d}"
+                            prices = checkurl3['data']['prices']
+
+                            # Cộng dồn giá trị prices vào tổng tiền
+                            tong += prices
+
+                            chuoi = (
+                                f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                                f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                                f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                                f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                                f"\033[1;33m{tong} vnđ"
+                            )
+                            print(chuoi) 
+                        else:
+
+                                    time.sleep(2)
+
+                                    url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
+                                    checkurl3 = ses.post(url3,params=PARAMS).json()
+                                    if checkurl3['success'] == True:
+                                        dem += 1
+                                        local_time = time.localtime()
+                                        hour = local_time.tm_hour
+                                        minute = local_time.tm_min
+                                        second = local_time.tm_sec
+
+                                        # Định dạng giờ, phút, giây
+                                        h = f"{hour:02d}"
+                                        m = f"{minute:02d}"
+                                        s = f"{second:02d}"
+                                        prices = checkurl3['data']['prices']
+
+                                        # Cộng dồn giá trị prices vào tổng tiền
+                                        tong += prices
+
+                                        chuoi = (
+                                            f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                                            f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                            f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                                            f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                                            f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                                            f"\033[1;33m{tong} vnđ"
+                                        )
+                                        print(chuoi) 
+                                    else:
+                                        time.sleep(2)
+
+                                        url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
+                                        checkurl3 = ses.post(url3,params=PARAMS).json()
+                                        if checkurl3['status'] == 200:
+                                                prices = checkurl3['data']['prices']
+                                                print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
+                                        else:
+                                            skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
+                                            checkskipjob = ses.post(skipjob,params=PARAMS).json()
+                                            if checkskipjob['status'] == 200:
+                                                message = checkskipjob['message']
+                                                print(Fore.RED+str(message))
+                                                PARAMSr = {
+                                                    'ads_id' : ads_id,
+                                                    'account_id' : account_id,
+                                                    'object_id' : object_id ,
+                                                    'async': 'true',
+                                                    'data': 'null',
+                                                    'type': type,
+                                                    }
+                elif checkurl3['status'] == 200:
+                    dem += 1
+                    local_time = time.localtime()
+                    hour = local_time.tm_hour
+                    minute = local_time.tm_min
+                    second = local_time.tm_sec
+
+                    # Định dạng giờ, phút, giây
+                    h = f"{hour:02d}"
+                    m = f"{minute:02d}"
+                    s = f"{second:02d}"
+                    prices = checkurl3['data']['prices']
+
+                    # Cộng dồn giá trị prices vào tổng tiền
+                    tong += prices
+
+                    chuoi = (
+                        f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                        f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                        f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                        f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                        f"\033[1;33m{tong} vnđ"
+                    )
+                    print(chuoi) 
+                else :
+                    skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
+                    checkskipjob = ses.post(skipjob,params=PARAMS).json()
+                    if checkskipjob['status'] == 200:
+                        message = checkskipjob['message']
+                        print(Fore.RED+str(message))
+                        PARAMSr = {
+                        'ads_id' : ads_id,
+                        'account_id' : account_id,
+                        'object_id' : object_id ,
+                        'async': 'true',
+                        'data': 'null',
+                        'type': type,
+                        }
+            else : 
+                countdown(15)
+                print(checkurl2['message'])
+                skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
+                checkskipjob = ses.post(skipjob,params=PARAMS).json()
+                if checkskipjob['status'] == 200:
+                    message = checkskipjob['message']
+                    print(Fore.RED+str(message))
+                    PARAMSr = {
+                    'ads_id' : ads_id,
+                    'account_id' : account_id,
+                    'object_id' : object_id ,
+                    'async': 'true',
+                    'data': 'null',
+                    'type': type,
+                    } 
 def banner():
  os.system("cls" if os.name == "nt" else "clear")
  banner = f"""
