@@ -262,7 +262,6 @@ def banner():
 
 def LIST():
     banner()
-    print("\033[1;32mNhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool TikTok\033[1;33m")
 os.system('cls' if os.name== 'nt' else 'clear')
 banner()
 checkfile = os.path.isfile('user.txt')
