@@ -166,7 +166,7 @@ os.system('cls' if os.name== 'nt' else 'clear')
 for x in banner:
   print(x,end = "")
   sleep(0.001)
-print(f'\033[1;36m|STT\033[1;97m| \033[1;33mThời gian ┊ \033[1;32mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng')
+print(f'\033[1;36m|STT\033[1;97m| \033[1;33mThời gian ┊ \033[1;32mStatus | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng')
 
 while True:
   if checkdoiacc == doiacc:
@@ -251,7 +251,7 @@ while True:
         if second < 10:
             s = "0" + str(second)
 
-        chuoi = (f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+        chuoi = (f"\033[1;31m| \033[1;36m{dem}\033[1;31m\033[1;97m | "
                 f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
                 f"\033[1;32msuccess\033[1;31m\033[1;97m | "
                 f"\033[1;31m{nhantien['data']['type']}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
