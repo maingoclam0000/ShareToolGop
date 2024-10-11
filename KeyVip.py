@@ -61,7 +61,7 @@ def TIKTOKINFO():
         print(f'\033[1;36m [{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;36m✈ \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
         
         i += 1
-    print(Fore.RED + '_________________________________________________________' + Fore.RESET)
+    print(Fore.RED + '════════════════════════════════════════════════' + Fore.RESET)
     choose = int(input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Tài Khoản : '))
     os.system('cls' if os.name== 'nt' else 'clear')
     if choose >=1 or choose <= len(user_tiktok1) :
@@ -72,6 +72,9 @@ def TIKTOKINFO():
         banner()
         choose = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Số Lượng Job : '))
         DELAY = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập delay : '))
+        print(Fore.RED + '════════════════════════════════════════════════' + Fore.RESET)
+        print(f'\033[1;36mSTT \033[1;97m| \033[1;33mThời gian ┊ \033[1;33mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng |')
+
         for i in range(choose):
             url2 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/jobs?account_id='+str(account_id)+'&data=null'
             checkurl2 = ses.get(url2,headers=headers).json()
@@ -126,7 +129,6 @@ def TIKTOKINFO():
 
                                         # Cộng dồn giá trị prices vào tổng tiền
                                         tong += prices
-
                                         chuoi = (
                                             f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
                                             f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
@@ -576,7 +578,6 @@ if checkurl1['status']== 200 :
                 username = checkurl1['data']['username']
                 coin = checkurl1['data']['coin']
                 user_id = checkurl1['data']['id']
-                print('\033[97m════════════════════════════════════════════════')
                 print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
                 print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))  
                 print('\033[97m════════════════════════════════════════════════')
