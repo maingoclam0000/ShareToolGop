@@ -47,6 +47,8 @@ def TIKTOKINFO():
     account_id1 = []
     STT = []
     STATUS =[]
+    tong = 0
+    dem = 0
     print('CAC TAI KHOAN DANG HOAT DONG')
     i=1
     head = ["STT", "  ACCOUNT","   STATUS"]
@@ -115,16 +117,64 @@ def TIKTOKINFO():
                                     url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
                                     checkurl3 = ses.post(url3,params=PARAMS).json()
                                     if checkurl3['status'] == 200:
-                                            prices = checkurl3['data']['prices']
-                                            print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
+                                        dem += 1
+                                        local_time = time.localtime()
+                                        hour = local_time.tm_hour
+                                        minute = local_time.tm_min
+                                        second = local_time.tm_sec
+
+                                        # Định dạng giờ, phút, giây
+                                        h = f"{hour:02d}"
+                                        m = f"{minute:02d}"
+                                        s = f"{second:02d}"
+                                        prices = checkurl3['data']['prices']
+
+                                        # Cộng dồn giá trị prices vào tổng tiền
+                                        tong += prices
+
+                                        chuoi = (
+                                            f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                                            f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                            f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                                            f"\033[1;31m{type}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                                            f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                                            f"\033[1;33m{tong} vnđ"
+                                        )
+                                        print(chuoi) 
+                                            # prices = checkurl3['data']['prices']
+                                            # print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
                                     else:
                                         time.sleep(2)
 
                                         url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
                                         checkurl3 = ses.post(url3,params=PARAMS).json()
                                         if checkurl3['status'] == 200:
-                                                prices = checkurl3['data']['prices']
-                                                print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
+                                            dem += 1
+                                            local_time = time.localtime()
+                                            hour = local_time.tm_hour
+                                            minute = local_time.tm_min
+                                            second = local_time.tm_sec
+
+                                            # Định dạng giờ, phút, giây
+                                            h = f"{hour:02d}"
+                                            m = f"{minute:02d}"
+                                            s = f"{second:02d}"
+                                            prices = checkurl3['data']['prices']
+
+                                            # Cộng dồn giá trị prices vào tổng tiền
+                                            tong += prices
+
+                                            chuoi = (
+                                                f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                                                f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                                f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                                                f"\033[1;31m{type}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                                                f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                                                f"\033[1;33m{tong} vnđ"
+                                            )
+                                            print(chuoi) 
+                                                # prices = checkurl3['data']['prices']
+                                                # print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
                                         else:
                                             skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
                                             checkskipjob = ses.post(skipjob,params=PARAMS).json()
@@ -140,8 +190,32 @@ def TIKTOKINFO():
                                                     'type': type,
                                                     }
                 elif checkurl3['status'] == 200:
-                    prices = checkurl3['data']['prices']
-                    print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
+                        dem += 1
+                        local_time = time.localtime()
+                        hour = local_time.tm_hour
+                        minute = local_time.tm_min
+                        second = local_time.tm_sec
+
+                        # Định dạng giờ, phút, giây
+                        h = f"{hour:02d}"
+                        m = f"{minute:02d}"
+                        s = f"{second:02d}"
+                        prices = checkurl3['data']['prices']
+
+                        # Cộng dồn giá trị prices vào tổng tiền
+                        tong += prices
+
+                        chuoi = (
+                            f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                            f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                            f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                            f"\033[1;31m{type}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                            f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                            f"\033[1;33m{tong} vnđ"
+                        )
+                        print(chuoi) 
+                    
+                    # print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
                 else :
                     skipjob = 'https://gateway.golike.net/api/advertising/publishers/tiktok/skip-jobs'
                     checkskipjob = ses.post(skipjob,params=PARAMS).json()
@@ -201,7 +275,7 @@ os.system('cls' if os.name== 'nt' else 'clear')
 banner()
 checkfile = os.path.isfile('user.txt')
 if checkfile == False:
-    AUTHUR = input(Fore.GREEN+'[+]''NHAP Authorization : ')
+    AUTHUR = input(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNHẬP Authorization Golike : ')
     createfile = open('user.txt','w')
     createfile.write(AUTHUR)
     createfile.close()
@@ -489,12 +563,8 @@ except requests.exceptions.InvalidHeader:
 if checkurl1['status']== 200 :
         print('DANG NHAP THANH CONG')
         time.sleep(3)
-        # os.system('cls' if os.name== 'nt' else 'clear')
-        # print(Fore.BLUE+'1.TOOL GOLIKE')
-        # choose = int(input(Fore.WHITE+'\n\n\n\n\nNHAP LUA CHON : '))
-        # if choose == 1 :
         os.system('cls' if os.name== 'nt' else 'clear')
-        banner()
+        LIST()
         ses.headers.update(headers)
         username = checkurl1['data']['username']
         coin = checkurl1['data']['coin']
@@ -503,10 +573,9 @@ if checkurl1['status']== 200 :
         print(Fore.GREEN+'[+] USERNAME : '+Fore.YELLOW+username)
         print(Fore.GREEN+'[+] TIEN : '+Fore.YELLOW+str(coin))
         print(Fore.RED+'_________________________________________________________')
-        LIST()
         print(Fore.RED+'Nhập 2 Để Xóa Authorization Hiện Tại')
         choose = int(input(Fore.WHITE+'Nhập Lựa Chọn : '))
-        if choose==1:
+        if choose == 1:
                 os.system('cls' if os.name== 'nt' else 'clear')
                 TIKTOKINFO()
         elif choose == 2:
