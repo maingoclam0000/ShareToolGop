@@ -563,7 +563,6 @@ if checkurl1['status']== 200 :
         username = checkurl1['data']['username']
         coin = checkurl1['data']['coin']
         user_id = checkurl1['data']['id']
-        print('\033[97m════════════════════════════════════════════════')
         print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
         print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))
         print(Fore.RED+'\033[97m════════════════════════════════════════════════')
