@@ -187,11 +187,12 @@ while True:
      
   print(f'\033[1;97mĐang \033[1;96mLấy \033[1;95mNhiệm \033[1;91mVụ\033[1;93m Follow',end="\r")    
   while True:
-    try:  
-      nhanjob = nhannv(account_id)
-      break
-    except:
-      pass
+      try:  
+          nhanjob = nhannv(account_id)
+          break
+      except:
+          time.sleep(1)  # Thêm thời gian chờ 1 giây trước khi thử lại
+          pass
   if(nhanjob["status"] == 200):
     ads_id = nhanjob["data"]["id"]
     link = nhanjob["data"]["link"]
