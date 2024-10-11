@@ -53,10 +53,10 @@ def INSTAGRAM():
         STATUS.append(Fore.GREEN+"Hoạt Động"+Fore.RED)
         account.append(usernametk)
         
-        print(f'\033[1;97m•[✩]➭\033[1;36m [{i}] \033[1;91m=> \033[1;97mTên Tài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;91m=> \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
+        print(f'\033[1;36m [{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;36m✈ \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
        
         i += 1
-    print(Fore.RED+'_________________________________________________________')    
+    print('\033[97m════════════════════════════════════════════════')
     choose = int(input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Tài Khoản : '))
     os.system('cls' if os.name== 'nt' else 'clear')
     if choose >=1 or choose <= len(user_INS) :
@@ -108,7 +108,7 @@ def INSTAGRAM():
         }
         DELAY = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Delay : '))
         print("\033[97m════════════════════════════════════════════════")
-
+        print(f'\033[1;36mSTT \033[1;97m| \033[1;33mThời gian ┊ \033[1;32mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng |')
         for i in range(choose):
             try:
                 job = f'https://gateway.golike.net/api/advertising/publishers/instagram/jobs?instagram_account_id={account_id}&data=null'
@@ -287,7 +287,6 @@ def banner():
 
 def LIST():
     banner()
-    print("\033[1;32mNhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool Instagram\033[1;33m")
 os.system('cls' if os.name== 'nt' else 'clear')
 banner()
 checkfile = os.path.isfile('user.txt')
@@ -581,14 +580,14 @@ if checkurl1['status']== 200 :
         # print(Fore.BLUE + '1.Tool Golike Mobile')
         # choose = int(input(Fore.WHITE + 'Nhập Lựa Chọn : '))
         # if choose == 1 :
+        LIST()
         username = checkurl1['data']['username']
         coin = checkurl1['data']['coin']
         user_id = checkurl1['data']['id']
-        print('________________________________________________________')
         print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
         print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))
-        print(Fore.RED+'_________________________________________________________')
-        LIST()
+        print(Fore.RED+'\033[97m════════════════════════════════════════════════')
+        print("\033[1;32mNhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool Instagram\033[1;33m")
         print(Fore.RED+'Nhập 2 Để Xóa Authorization Hiện Tại')
         choose = int(input(Fore.WHITE+'Nhập Lựa Chọn : '))
         if choose == 1:
@@ -596,8 +595,7 @@ if checkurl1['status']== 200 :
             banner()
             ip = requests.get('https://api.ipify.org?format=json').json()
             print(Fore.GREEN + 'Danh Sách Tài Khoản'+ Fore.RED+'         Ip : '+Fore.GREEN+str(ip['ip']))
-            print(Fore.RED+'_________________________________________________________\n')
-
+            print(Fore.RED+'\033[97m════════════════════════════════════════════════')
             INSTAGRAM()
         elif choose == 2:
                 os.remove('user.txt')
