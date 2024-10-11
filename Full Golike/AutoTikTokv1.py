@@ -217,67 +217,61 @@ while True:
                         
     print("\r                          \r", end="") 
     print("\033[1;35mĐang Nhận Tiền         ",end = "\r")
-    attempts = 0
+# Vòng lặp cố gắng nhận tiền với tối đa 2 lần thử
     max_attempts = 2
+    attempts = 0
+    nhantien = None
 
-    # Vòng lặp thử lại tối đa max_attempts lần
     while attempts < max_attempts:
         try:
             nhantien = hoanthanh(ads_id, account_id)
-            if nhantien["status"] == 200:
-              dem += 1
-              tien = nhantien["data"]["prices"]
-              tong += tien
-              local_time = time.localtime()
-              hour = local_time.tm_hour
-              minute = local_time.tm_min
-              second = local_time.tm_sec
-              h = hour
-              m = minute
-              s = second
-              if(hour < 10):
-                h = "0"+str(hour)
-              if(minute < 10):
-                m = "0"+str(minute)
-              if(second < 10):
-                s = "0"+str(second)
-              chuoi = f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | \033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | \033[1;32msuccess\033[1;31m\033[1;97m | \033[1;31m{nhantien['data']['type']}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |\033[1;32m Ẩn ID\033[1;97m |\033[1;97m \033[1;32m+{tien} \033[1;97m| \033[1;33m{tong}"  
-              print("                                                    ",end = "\r")
+            if nhantien["status"] == 200:  # Nhận tiền thành công
+                break
+        except:
+            pass  # Bỏ qua ngoại lệ và thử lại nếu có
 
-              print(chuoi)    
-              checkdoiacc = 0  
-            else:
-                # In toàn bộ response để kiểm tra lý do
-                # print(f"Thử lại lần {attempts + 1}.")
-                if attempts == 0:
-                    for countdown in range(3, -1, -1):
-                        print(f"Vui lòng chờ {countdown} giây để hoàn thành job lần thứ 2", end="\r")
-                        time.sleep(1)
-                    print(" " * 50, end="\r")  # Xóa dòng đếm ngược sau khi hoàn thành
+        attempts += 1  # Tăng số lần thử
 
-            attempts += 1
+    # Kiểm tra kết quả của việc nhận tiền
+    if nhantien and nhantien["status"] == 200:
+        dem += 1
+        tien = nhantien["data"]["prices"]
+        tong += tien
+        local_time = time.localtime()
+        hour = local_time.tm_hour
+        minute = local_time.tm_min
+        second = local_time.tm_sec
+        h = hour
+        m = minute
+        s = second
+        if hour < 10:
+            h = "0" + str(hour)
+        if minute < 10:
+            m = "0" + str(minute)
+        if second < 10:
+            s = "0" + str(second)
 
-        except Exception as e:
-            print(f"Đã xảy ra lỗi: {str(e)}. Thử lại lần {attempts + 1}.")
-            attempts += 1
-            time.sleep(1)  # Thử lại sau 1 giây
+        chuoi = (f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                f"\033[1;31m{nhantien['data']['type']}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                f"\033[1;32m Ẩn ID\033[1;97m |\033[1;97m \033[1;32m+{tien} \033[1;97m| "
+                f"\033[1;33m{tong}")
 
-    # Nếu hoàn thành thất bại sau 2 lần thử, bỏ qua job và in thông báo
-    if attempts == max_attempts:
-        print("\033[1;31mBỏ Qua Nhiệm Vụ", end="\r")
-        # Xóa dòng thông báo lỗi cũ
-        time.sleep(1)
-
-    # Xử lý trường hợp không hoàn thành
-    if nhantien["status"] != 200:
+        print("                                                    ", end="\r")
+        print(chuoi)
+        checkdoiacc = 0
+    else:
+        # Nếu cả 2 lần thử đều thất bại, bỏ qua nhiệm vụ
         while True:
             try:
                 baoloi(ads_id, object_id, account_id, nhanjob["data"]["type"])
-                print(" " * 60, end="\r")  # Xóa dòng thông báo lỗi cũ
-                print("\033[1;31mBỏ Qua Nhiệm Vụ", end="\r")
-                time.sleep(1)
+                print("                                              ", end="\r")
+                print("\033[1;31mBỎ QUA NHIỆM VỤ ", end="\r")
+                sleep(1)
                 checkdoiacc += 1
                 break
-            except Exception as e:
-                print(f"Lỗi khi xử lý thông báo lỗi: {str(e)}")
-                time.sleep(1)  # Thử lại sau 1 giây
+            except:
+                qua = 0
+                pass
+
