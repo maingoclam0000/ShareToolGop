@@ -59,7 +59,7 @@ def TIKTOKINFO():
         STT.append(i)
         STATUS.append(Fore.GREEN + "Hoạt Động" + Fore.RESET)  # Sử dụng Fore.RESET để trả lại màu gốc
         
-        print(f'\033[1;36m[{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;36m✈ \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
+        print(f'\033[1;36m[{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;97m|\033[1;32m㊪ :\033[1;93m {STATUS[-1]} |')
         
         i += 1
     print('\033[97m════════════════════════════════════════════════')

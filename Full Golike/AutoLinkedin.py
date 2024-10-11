@@ -53,7 +53,7 @@ def LINKEDIN():
         STATUS.append(Fore.GREEN + "Hoạt Động" + Fore.RESET)
         
         # In ra thông tin tài khoản mà không cần hiển thị dạng bảng
-        print(f'\033[1;36m[{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;36m✈ \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
+        print(f'\033[1;36m[{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;97m|\033[1;32m㊪ :\033[1;93m {STATUS[-1]} |')
         # print(f'\033[1;97m•[✩]➭\033[1;36m [{i}] \033[1;91m=> \033[1;97mTên Tài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;91m=> \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
         
         i += 1

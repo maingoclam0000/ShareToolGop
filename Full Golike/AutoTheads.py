@@ -60,7 +60,7 @@ def THREADS():
             STT.append(i)
             STATUS.append(Fore.GREEN+"Hoạt Động"+Fore.RED)
         # create header
-            print(f'\033[1;36m [{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;36m✈ \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
+            print(f'\033[1;36m[{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;97m|\033[1;32m㊪ :\033[1;93m {STATUS[-1]} |')
             i += 1
     
     print('\033[97m════════════════════════════════════════════════')
@@ -740,11 +740,6 @@ if checkurl1['status']== 200 :
         print('DANG NHAP THANH CONG')
         time.sleep(3)
         os.system('cls' if os.name== 'nt' else 'clear')
-        # banner()
-        # print(Fore.BLUE + '1.Tool Golike Mobile')
-        # choose = int(input(Fore.WHITE + 'Nhập Lựa Chọn : '))
-        # if choose == 1 :
-        LIST()
         username = checkurl1['data']['username']
         coin = checkurl1['data']['coin']
         user_id = checkurl1['data']['id']
