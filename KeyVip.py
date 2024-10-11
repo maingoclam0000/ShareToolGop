@@ -53,9 +53,6 @@ def TIKTOKINFO():
     for data in checkurl1_2['data']:
         usernametk = data['nickname']
         account_id = data['id']
-        
-        print(f'{i}. {usernametk}')
-        
         user_tiktok1.append(usernametk)
         account_id1.append(account_id)
         STT.append(i)
@@ -268,7 +265,6 @@ def banner():
   sleep(0.00125)        
 def LIST():
     banner()
-    print("\033[1;32mNhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool TikTok\033[1;33m")
 os.system('cls' if os.name== 'nt' else 'clear')
 banner()
 checkfile = os.path.isfile('user.txt')
@@ -568,13 +564,15 @@ if checkurl1['status']== 200 :
         coin = checkurl1['data']['coin']
         user_id = checkurl1['data']['id']
         print('________________________________________________________')
-        print(Fore.GREEN+'[+] USERNAME : '+Fore.YELLOW+username)
-        print(Fore.GREEN+'[+] TIEN : '+Fore.YELLOW+str(coin))
+        print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
+        print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))
         print(Fore.RED+'_________________________________________________________')
-        print(Fore.RED+'Nhập 2 Để Xóa Authorization Hiện Tại')
-        choose = int(input(Fore.WHITE+'Nhập Lựa Chọn : '))
+        print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool TikTok\033[1;33m")
+        print(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Xóa Authorization Hiện Tại')
+        choose = int(input(Fore.WHITE+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập Lựa Chọn : '))
         if choose == 1:
                 os.system('cls' if os.name== 'nt' else 'clear')
+                LIST()
                 TIKTOKINFO()
         elif choose == 2:
                 os.remove('user.txt')
