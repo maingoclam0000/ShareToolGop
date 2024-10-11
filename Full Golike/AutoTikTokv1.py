@@ -166,7 +166,8 @@ os.system('cls' if os.name== 'nt' else 'clear')
 for x in banner:
   print(x,end = "")
   sleep(0.001)
-print("\033[1;31mYouTube : \033[1;33mHuong \033[1;33mDev\033[1;32m")
+print(f'\033[1;36m|STT\033[1;97m| \033[1;33mThời gian ┊ \033[1;32mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng')
+
 while True:
   if checkdoiacc == doiacc:
     dsaccloi.append(chontktiktok["data"][luachon - 1]["nickname"])
@@ -224,37 +225,27 @@ while True:
         try:
             nhantien = hoanthanh(ads_id, account_id)
             if nhantien["status"] == 200:
-                # Nếu hoàn thành thành công, cập nhật thông tin và thoát vòng lặp
-                dem += 1
-                tien = nhantien["data"]["prices"]
-                tong += tien
+              dem += 1
+              tien = nhantien["data"]["prices"]
+              tong += tien
+              local_time = time.localtime()
+              hour = local_time.tm_hour
+              minute = local_time.tm_min
+              second = local_time.tm_sec
+              h = hour
+              m = minute
+              s = second
+              if(hour < 10):
+                h = "0"+str(hour)
+              if(minute < 10):
+                m = "0"+str(minute)
+              if(second < 10):
+                s = "0"+str(second)
+              chuoi = f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | \033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | \033[1;32msuccess\033[1;31m\033[1;97m | \033[1;31m{nhantien['data']['type']}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |\033[1;32m Ẩn ID\033[1;97m |\033[1;97m \033[1;32m+{tien} \033[1;97m| \033[1;33m{tong}"  
+              print("                                                    ",end = "\r")
 
-                # Lấy thời gian hiện tại
-                local_time = time.localtime()
-                hour = local_time.tm_hour
-                minute = local_time.tm_min
-                second = local_time.tm_sec
-
-                # Định dạng giờ, phút, giây
-                h = f"{hour:02d}"
-                m = f"{minute:02d}"
-                s = f"{second:02d}"
-
-                # Tạo chuỗi thông báo
-                chuoi = (
-                    f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
-                    f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
-                    f"\033[1;32msuccess\033[1;31m\033[1;97m | "
-                    f"\033[1;31m{nhantien['data']['type']}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
-                    f"\033[1;32m Ẩn ID\033[1;97m | \033[1;97m \033[1;32m+{tien} \033[1;97m| "
-                    f"\033[1;33m{tong}"
-                )
-
-                # Xóa dòng trước đó và in thông báo mới
-                print(" " * 60, end="\r")  # Xóa dòng cũ
-                print(chuoi)    
-                checkdoiacc = 0
-                break  # Thoát vòng lặp nếu thành công
+              print(chuoi)    
+              checkdoiacc = 0  
             else:
                 # In toàn bộ response để kiểm tra lý do
                 # print(f"Thử lại lần {attempts + 1}.")
