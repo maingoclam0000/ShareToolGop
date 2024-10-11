@@ -563,16 +563,24 @@ if checkurl1['status']== 200 :
         username = checkurl1['data']['username']
         coin = checkurl1['data']['coin']
         user_id = checkurl1['data']['id']
-        print('________________________________________________________')
+        print('\033[97m════════════════════════════════════════════════')
         print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
         print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))
-        print(Fore.RED+'_________________________________________________________')
+        print(Fore.RED+'\033[97m════════════════════════════════════════════════')
         print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool TikTok\033[1;33m")
         print(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Xóa Authorization Hiện Tại')
         choose = int(input(Fore.WHITE+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập Lựa Chọn : '))
         if choose == 1:
                 os.system('cls' if os.name== 'nt' else 'clear')
                 LIST()
+                ses.headers.update(headers)
+                username = checkurl1['data']['username']
+                coin = checkurl1['data']['coin']
+                user_id = checkurl1['data']['id']
+                print('\033[97m════════════════════════════════════════════════')
+                print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
+                print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))  
+                print('\033[97m════════════════════════════════════════════════')
                 TIKTOKINFO()
         elif choose == 2:
                 os.remove('user.txt')
