@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import time
 import sys
-import traceback
 banner = """
 \033[1;33m██      ██╗      ████████╗ █████╗  █████╗ ██╗
 \033[1;35m██╗    ╔██║      ╚══██╔══╝██╔══██╗██╔══██╗██║
@@ -195,16 +194,16 @@ while True:
   #         time.sleep(1)  # Thêm thời gian chờ 1 giây trước khi thử lại
   #         pass
   while True:
-      try:
-          nhanjob = nhannv(account_id)
-          if nhanjob:  # Kiểm tra nếu nhanjob tồn tại và không rỗng
-              break  # Thoát khỏi vòng lặp nếu nhận được nhiệm vụ thành công
-          else:
-              print("\033[1;31mHệ thống đang tính toán jobs dành cho bạn, bấm load jobs lại sau 10 giây!")
-      except Exception as e:
-          print("\033[1;31mLỗi khi lấy nhiệm vụ, thử lại...")
-          traceback.print_exc()  # In chi tiết lỗi ra màn hình
-      time.sleep(1)  # Đợi 1 giây trước khi thử lại
+    try:
+        nhanjob = nhannv(account_id)
+        if nhanjob:  # Kiểm tra nếu nhanjob tồn tại và không rỗng
+            break  # Thoát khỏi vòng lặp nếu nhận được nhiệm vụ thành công
+        else:
+            print("\033[1;31mHệ thống đang tính toán jobs dành cho bạn,bấm load jobs lại sau 10 giây !")
+    except:
+        print("\033[1;31mHệ thống đang tính toán jobs dành cho bạn,bấm load jobs lại sau 10 giây !")
+        pass
+    time.sleep(1)
   if(nhanjob["status"] == 200):
     ads_id = nhanjob["data"]["id"]
     link = nhanjob["data"]["link"]
