@@ -107,7 +107,7 @@ def INSTAGRAM():
         }
         DELAY = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Delay : '))
         print("\033[97m════════════════════════════════════════════════")
-        print(f'\033[1;36mSTT \033[1;97m| \033[1;33mThời gian ┊ \033[1;32mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng |')
+        print(f'\033[1;36m|STT|\033[1;97m| \033[1;33mThời gian ┊ \033[1;32mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng |')
         for i in range(choose):
             try:
                 job = f'https://gateway.golike.net/api/advertising/publishers/instagram/jobs?instagram_account_id={account_id}&data=null'
@@ -148,7 +148,7 @@ def INSTAGRAM():
 
                                 chuoi = (
                                     f"\033[1;31m| \033[1;36m{dem}\033[1;31m\033[1;97m | "
-                                    f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                    f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m  | "
                                     f"\033[1;32msuccess\033[1;31m\033[1;97m | "
                                     f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;97m | "
                                     f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
@@ -217,7 +217,7 @@ def INSTAGRAM():
 
                                 chuoi = (
                                     f"\033[1;31m| \033[1;36m{dem}\033[1;31m\033[1;97m | "
-                                    f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                    f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m  | "
                                     f"\033[1;32msuccess\033[1;31m\033[1;97m | "
                                     f"\033[1;31mlike \033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
                                     f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "

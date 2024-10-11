@@ -102,7 +102,7 @@ def THREADS():
         }
         DELAY = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập Delay : '))
         print("\033[97m════════════════════════════════════════════════")
-        print(f'\033[1;36mSTT \033[1;97m| \033[1;33mThời gian ┊ \033[1;32mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng |')
+        print(f'\033[1;36m|STT|\033[1;97m| \033[1;33mThời gian ┊ \033[1;32mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng |')
         for i in range(choose):
             try:
                 headersTHR = {
@@ -202,7 +202,7 @@ def THREADS():
 
                                     chuoi = (
                                         f"\033[1;31m| \033[1;36m{dem}\033[1;31m\033[1;97m | "
-                                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m  | "
                                         f"\033[1;32msuccess\033[1;31m\033[1;97m | "
                                         f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
                                         f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
@@ -251,9 +251,9 @@ def THREADS():
 
                                     chuoi = (
                                         f"\033[1;31m| \033[1;36m{dem}\033[1;31m\033[1;97m | "
-                                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m  | "
                                         f"\033[1;32msuccess\033[1;31m\033[1;97m | "
-                                        f"\033[1;31mlike \033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                                        f"\033[1;31mlike  \033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
                                         f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
                                         f"\033[1;33m{tong} vnđ"
                                     )
@@ -348,9 +348,9 @@ def THREADS():
 
                                     chuoi = (
                                         f"\033[1;31m| \033[1;36m{dem}\033[1;31m\033[1;97m | "
-                                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m  | "
                                         f"\033[1;32msuccess\033[1;31m\033[1;97m | "
-                                        f"\033[1;31mlike \033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                                        f"\033[1;31mlike  \033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
                                         f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
                                         f"\033[1;33m{tong} vnđ"
                                     )
@@ -751,7 +751,7 @@ if checkurl1['status']== 200 :
         choose = int(input(Fore.WHITE+'Nhập Lựa Chọn : '))
         if choose == 1:
             os.system('cls' if os.name== 'nt' else 'clear')
-            LIST()
+            banner()
             username = checkurl1['data']['username']
             coin = checkurl1['data']['coin']
             user_id = checkurl1['data']['id']
