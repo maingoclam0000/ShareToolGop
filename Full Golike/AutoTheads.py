@@ -756,9 +756,12 @@ if checkurl1['status']== 200 :
         choose = int(input(Fore.WHITE+'Nhập Lựa Chọn : '))
         if choose == 1:
             os.system('cls' if os.name== 'nt' else 'clear')
-            banner()
-            ip = requests.get('https://api.ipify.org?format=json').json()
-            print(Fore.GREEN + 'Danh Sách Tài Khoản'+ Fore.RED+'         Ip : '+Fore.GREEN+str(ip['ip']))
+            LIST()
+            username = checkurl1['data']['username']
+            coin = checkurl1['data']['coin']
+            user_id = checkurl1['data']['id']
+            print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
+            print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))
             print(Fore.RED+'\033[97m════════════════════════════════════════════════')
             THREADS()
         elif choose == 2:

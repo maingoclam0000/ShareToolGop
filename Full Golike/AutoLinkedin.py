@@ -53,13 +53,13 @@ def LINKEDIN():
         STATUS.append(Fore.GREEN + "Hoạt Động" + Fore.RESET)
         
         # In ra thông tin tài khoản mà không cần hiển thị dạng bảng
-        print(f'\033[1;36m [{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;36m✈ \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
+        print(f'\033[1;36m[{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;36m✈ \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
         # print(f'\033[1;97m•[✩]➭\033[1;36m [{i}] \033[1;91m=> \033[1;97mTên Tài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;91m=> \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
         
         i += 1
         print('\033[97m════════════════════════════════════════════════')
     # Yêu cầu người dùng chọn tài khoản bằng cách nhập số thứ tự
-    choose = int(input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Tài Khoản : '))
+    choose = int(input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập Tài Khoản : '))
     os.system('cls' if os.name== 'nt' else 'clear')
     if choose >=1 or choose <= len(user_linkedin1) :
         user_tiktok1 = user_linkedin1[choose-1:choose]
@@ -69,7 +69,7 @@ def LINKEDIN():
         checkfile = os.path.isfile('COOKIELINKEDIN'+str(account_id)+'.txt')
         if checkfile == False:
             banner()
-            COOKIELINK = input(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Cookie Linkedin: ')
+            COOKIELINK = input(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32Nhập Cookie Linkedin: ')
             createfile = open('COOKIELINKEDIN'+str(account_id)+'.txt','w')
             createfile.write(COOKIELINK)
             createfile.close()
@@ -927,14 +927,12 @@ if checkurl1['status']== 200 :
         print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTài Khoản : '+Fore.YELLOW+username)
         print(Fore.GREEN+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mTổng Tiền : '+Fore.YELLOW+str(coin))
         print(Fore.RED+'\033[97m════════════════════════════════════════════════')
-        print("\033[1;32mNhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool Linkedin\033[1;33m")
-        print(Fore.RED+'Nhập 2 Để Xóa Authorization Hiện Tại')
+        print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32Nhập \033[1;31m1 \033[1;33mđể vào \033[1;34mTool Linkedin\033[1;33m")
+        print(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31Nhập 2 Để Xóa Authorization Hiện Tại')
         choose = int(input(Fore.WHITE+'Nhập Lựa Chọn : '))
         if choose == 1:
             os.system('cls' if os.name== 'nt' else 'clear')
-            banner()
-            ip = requests.get('https://api.ipify.org?format=json').json()
-            print(Fore.GREEN + 'Danh Sách Tài Khoản'+ Fore.RED+'         Ip : '+Fore.GREEN+str(ip['ip']))
+            LIST()
             username = checkurl1['data']['username']
             coin = checkurl1['data']['coin']
             user_id = checkurl1['data']['id']
