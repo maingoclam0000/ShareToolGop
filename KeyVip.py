@@ -50,6 +50,7 @@ def TIKTOKINFO():
     tong = 0
     dem = 0
     i = 1
+
     for data in checkurl1_2['data']:
         usernametk = data['nickname']
         account_id = data['id']
@@ -61,7 +62,7 @@ def TIKTOKINFO():
         print(f'\033[1;36m [{i}] \033[1;36m✈ \033[1;97mTài Khoản┊\033[1;32m㊪ :\033[1;93m {usernametk} \033[1;36m✈ \033[1;97mStatus|\033[1;32m㊪ :\033[1;93m {STATUS[-1]}')
         
         i += 1
-    print(Fore.RED + '════════════════════════════════════════════════' + Fore.RESET)
+    print('\033[97m════════════════════════════════════════════════')
     choose = int(input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Tài Khoản : '))
     os.system('cls' if os.name== 'nt' else 'clear')
     if choose >=1 or choose <= len(user_tiktok1) :
@@ -72,8 +73,8 @@ def TIKTOKINFO():
         banner()
         choose = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập Số Lượng Job : '))
         DELAY = int(input(Fore.RED+'\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Nhập delay : '))
-        print(Fore.RED + '════════════════════════════════════════════════' + Fore.RESET)
-        print(f'\033[1;36mSTT \033[1;97m| \033[1;33mThời gian ┊ \033[1;33mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng |')
+        print('\033[97m════════════════════════════════════════════════')
+        print(f'\033[1;36mSTT \033[1;97m| \033[1;33mThời gian ┊ \033[1;32mTrạng Thái | \033[1;31mType Job | \033[1;32mID Acc | \033[1;32mXu |\033[1;33m Tổng |')
 
         for i in range(choose):
             url2 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/jobs?account_id='+str(account_id)+'&data=null'
@@ -106,8 +107,31 @@ def TIKTOKINFO():
                         url3 = 'https://gateway.golike.net/api/advertising/publishers/tiktok/complete-jobs'
                         checkurl3 = ses.post(url3,params=PARAMS).json()
                         if checkurl3['status'] == 200:
-                                prices = checkurl3['data']['prices']
-                                print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
+                            dem += 1
+                            local_time = time.localtime()
+                            hour = local_time.tm_hour
+                            minute = local_time.tm_min
+                            second = local_time.tm_sec
+
+                            # Định dạng giờ, phút, giây
+                            h = f"{hour:02d}"
+                            m = f"{minute:02d}"
+                            s = f"{second:02d}"
+                            prices = checkurl3['data']['prices']
+
+                            # Cộng dồn giá trị prices vào tổng tiền
+                            tong += prices
+                            chuoi = (
+                                f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                                f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                                f"\033[1;31m{type}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                                f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                                f"\033[1;33m{tong} vnđ"
+                            )
+                            print(chuoi) 
+                                # prices = checkurl3['data']['prices']
+                                # print(Fore.CYAN+'['+str(i)+']'+'|'+Fore.WHITE+type+'|'+Fore.GREEN+str(ads_id)+' | '+Fore.YELLOW+str(prices)+'VND'+'|'+Fore.BLUE+"SUCCESS")
                         else:
 
                                     time.sleep(2)
