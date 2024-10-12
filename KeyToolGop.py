@@ -67,6 +67,13 @@ def checkver():
         sys.exit()
     return version
 
+current_version = checkver()
+if current_version:
+    print(f"Phiên bản hiện tại: {current_version}")
+else:
+    print("Không thể lấy thông tin phiên bản hoặc tool đang được bảo trì.")
+    sys.exit()
+
 def banner():
  os.system("cls" if os.name == "nt" else "clear")
  banner = f"""

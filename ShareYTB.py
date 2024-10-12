@@ -53,6 +53,7 @@ def checkver():
     url = 'https://checkserver.hotrommo.com/'
     version, maintenance = bes4(url)
     if maintenance == 'on':
+        print("Tool đang được bảo trì. Vui lòng thử lại sau. \nHoặc vào nhóm Tele: https://t.me/+77MuosyD-yk4MGY1")
         sys.exit()
     return version
 
