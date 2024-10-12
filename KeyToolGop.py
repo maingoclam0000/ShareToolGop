@@ -191,7 +191,6 @@ def main():
                             sys.exit()
                         
                         if choice == "1":  # Kiểm tra chuỗi "1"
-                            print(url)
                             yeumoney_future = executor.submit(get_shortened_link_phu, url)
                             yeumoney_data = yeumoney_future.result()
                             if yeumoney_data and yeumoney_data.get('status') == "error":
@@ -224,32 +223,6 @@ def main():
                                     return  # Thoát khỏi vòng lặp và hàm main
                                 else:
                                     print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Sai Vui Lòng Vượt Lại Link:', link_key_4m)
-                            # yeumoney_future = executor.submit(get_shortened_link_phu, url)
-                            # yeumoney_data = yeumoney_future.result()
-                            # if yeumoney_data and yeumoney_data.get('status') == "error":
-                            #     print(yeumoney_data.get('message'))
-                            #     return
-                            # else:
-                            #     link_key_yeumoney = yeumoney_data.get('shortenedUrl')
-                            #     dlink_future = executor.submit(get_shortened_link, link_key_yeumoney)
-                            #     dlink_data = dlink_future.result()
-                            #     # print(dlink_data)
-                            #     if dlink_data and dlink_data.get('status') == "error":
-                            #         print(dlink_data.get('message'))
-                            #         return
-                            #     else:
-                            #         link_key_dlink = dlink_data['url']
-                            #         print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mLink Để Vượt Key Là:', link_key_dlink)
-                            
-                            # while True:
-                            #     keynhap = input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Đã Vượt Là: ')
-                            #     if keynhap == key:
-                            #         print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Key Đúng Mời Bạn Dùng Tool')
-                            #         sleep(2)
-                            #         luu_thong_tin_ip(ip_address, keynhap, expiration_date)
-                            #         return  # Thoát khỏi vòng lặp và hàm main
-                            #     else:
-                            #         print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Sai Vui Lòng Vượt Lại Link:', link_key_dlink)
                         elif choice == "2":  # Kiểm tra chuỗi "2"
                             yeumoney_future = executor.submit(get_shortened_link_phu, url)
                             yeumoney_data = yeumoney_future.result()
