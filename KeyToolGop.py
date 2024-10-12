@@ -50,8 +50,8 @@ def bes4(url):
         response = requests.get(url, timeout=5)
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, 'html.parser')
-            version_tag = soup.find('span', id='version')
-            maintenance_tag = soup.find('span', id='maintenance')
+            version_tag = soup.find('span', id='version_vip')
+            maintenance_tag = soup.find('span', id='maintenance_vip')
             version = version_tag.text.strip() if version_tag else None
             maintenance = maintenance_tag.text.strip() if maintenance_tag else None
             return version, maintenance
@@ -63,6 +63,7 @@ def checkver():
     url = 'https://checkserver.hotrommo.com/'
     version, maintenance = bes4(url)
     if maintenance == 'on':
+        print("Tool đang được bảo trì. Vui lòng thử lại sau. \nHoặc vào nhóm Tele: https://t.me/+77MuosyD-yk4MGY1")
         sys.exit()
     return version
 
