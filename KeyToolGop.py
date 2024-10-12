@@ -45,6 +45,35 @@ hong = "\033[1;35m"
 trang = "\033[1;39m"
 end = '\033[0m'
 
+def bes4(url):
+    try:
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            version_tag = soup.find('span', id='version_vip')
+            maintenance_tag = soup.find('span', id='maintenance_vip')
+            version = version_tag.text.strip() if version_tag else None
+            maintenance = maintenance_tag.text.strip() if maintenance_tag else None
+            return version, maintenance
+    except requests.RequestException:
+        return None, None
+    return None, None
+
+def checkver():
+    url = 'https://checkserver.hotrommo.com/'
+    version, maintenance = bes4(url)
+    if maintenance == 'on':
+        print("\033[1;31mTool đang được bảo trì. Vui lòng thử lại sau. \nHoặc vào nhóm Tele: \033[1;32mhttps://t.me/+77MuosyD-yk4MGY1")
+        sys.exit()
+    return version
+
+current_version = checkver()
+if current_version:
+    print(f"Phiên bản hiện tại: {current_version}")
+else:
+    print("Không thể lấy thông tin phiên bản hoặc tool đang được bảo trì.")
+    sys.exit()
+
 def banner():
  os.system("cls" if os.name == "nt" else "clear")
  banner = f"""
